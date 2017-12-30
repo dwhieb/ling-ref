@@ -1,0 +1,28 @@
+{
+  "name": "ling-ref",
+  "version": "0.1.0",
+  "description": "A Handlebars template for rendering a bibliography following the unified style sheet for linguistics",
+  "keywords": [
+    "Handlebars",
+    "handlebars.js",
+    "linguistics",
+    "bibliography",
+    "research",
+    "stylesheet"
+  ],
+  "homepage": "https://github.com/dwhieb/ling-ref#readme",
+  "bugs": "https://github.com/dwhieb/ling-ref/issues",
+  "license": "MIT",
+  "author": {
+    "name": "Daniel W. Hieber",
+    "email": "dwhieb@gmail.com",
+    "url": "https://danielhieber.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dwhieb/ling-ref.git"
+  },
+  "devDependencies": {
+    "handlebars": "^4.0.11"
+  }
+}
