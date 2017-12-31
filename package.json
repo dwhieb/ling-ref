@@ -22,7 +22,8 @@
     "type": "git",
     "url": "git+https://github.com/dwhieb/ling-ref.git"
   },
-  "devDependencies": {
-    "handlebars": "^4.0.11"
-  }
+  "scripts": {
+    "test": "nodemon ../utilities/node/server.js ./test"
+  },
+  "devDependencies": {}
 }

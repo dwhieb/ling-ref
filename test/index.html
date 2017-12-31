@@ -2,14 +2,17 @@
 <html>
 
   <head>
+
     <meta charset=utf-8>
-    <title>ling-ref</title>
     <meta name=author content="Daniel W. Hieber">
     <meta name=description content="Test page for the ling-ref npm package">
     <meta name=keywords content="Handlebars, linguistics, bibliography">
     <meta name=generator content="Atom">
     <meta name=referrer content="no-referrer">
     <meta name=viewport content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>ling-ref</title>
+
   </head>
 
   <body>
@@ -18,6 +21,16 @@
       <h1>ling-ref</h1>
     </header>
 
+    <main></main>
+
   </body>
+
+  <script src=handlebars.js></script>
+  <script type=module src=index.js></script>
+
+  <script type=module>
+    import test from './index.js';
+    test();
+  </script>
 
 </html>
