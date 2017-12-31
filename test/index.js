@@ -1,20 +1,25 @@
-// Creates the render function from the Handlebars template
-const createRenderer = compile => ref => {};
+// A comparator function (for using with sorts)
+const compare = (a, b) => {
+  if (a < b) return -1;
+  if (a > b) return +1;
+  return 0;
+};
 
-const endsWith = function(a, b, opts) {
-  return a.endsWith(b) ? opts.fn(this) : opts.inverse(this); // eslint-disable-line no-invalid-this
+// Creates the render function from the Handlebars template and the list element
+const createRenderer = (compile, list) => ref => {
+  const html = compile(ref);
+  list.insertAdjacentHTML(`beforeend`, html);
 };
 
 // Preformats a Mendeley reference before rendering
 /* eslint-disable no-param-reassign */
 const format = ref => {
-
   if (!ref.year) ref.year = 0;
   if (ref.authors) ref.sortKey = ref.authors[0].last_name;
   if (ref.editors) ref.sortKey = ref.editors[0].last_name;
   if (!(`sortKey` in ref)) ref.sortKey = ``;
   if (ref.pages) ref.pages = ref.pages.replace('-', '–');
-
+  return ref;
 };
 /* eslint-enable no-param-reassign */
 
@@ -26,27 +31,23 @@ const getReferences = async () => {
 
 // Fetches the Handlebars template and returns it as a String
 const getTemplate = async () => {
-  const res      = await fetch(`../../templates/reference.hbs`);
+  const res      = await fetch(`../../dist/reference.hbs`);
   const template = await res.text();
   return Handlebars.compile(template);
 };
 
-// A Handlebars helper that checks whether the first and second argument are the same
-const is = function(a, b, opts) {
-  return a === b ? opts.fn(this) : opts.inverse(this); // eslint-disable-line no-invalid-this
-};
-
 // Sorts the Array of Mendeley references
-const sort = (a, b) => {};
+const sort = (a, b) => compare(a.sortKey.toLowerCase(), b.sortKey.toLowerCase())
+  || compare(a.year, b.year)
+  || compare(a.title, b.title);
 
 // Run the script
 (async () => {
 
-  Handlebars.registerHelper({ endsWith, is });
-
   const compile    = await getTemplate();
   const references = await getReferences();
-  const render     = createRenderer(compile);
+  const list       = document.getElementById(`references`);
+  const render     = createRenderer(compile, list);
   const refs       = references.map(format);
 
   refs.sort(sort);
