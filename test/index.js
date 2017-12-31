@@ -15,7 +15,12 @@ const createRenderer = (compile, list) => ref => {
 /* eslint-disable no-param-reassign */
 const format = ref => {
   if (!ref.year) ref.year = 0;
-  if (ref.authors) ref.sortKey = ref.authors[0].last_name;
+  if (ref.authors) {
+    ref.sortKey = ref.authors[0].last_name;
+    if (ref.authors.length === 1 && ref.authors[0].first_name.endsWith('.')) {
+      ref.authors[0].first_name = ref.authors[0].first_name.slice(0, -1);
+    }
+  }
   if (ref.editors) ref.sortKey = ref.editors[0].last_name;
   if (!(`sortKey` in ref)) ref.sortKey = ``;
   if (ref.pages) ref.pages = ref.pages.replace('-', '–');

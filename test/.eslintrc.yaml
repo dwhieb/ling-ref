@@ -6,5 +6,6 @@ env:
 globals:
   Handlebars: true
 rules:
+  camelcase: off
   require-jsdoc: off
   valid-jsdoc: off

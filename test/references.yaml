@@ -13,6 +13,16 @@
   citation_key: Mithun1999
   notes: "Includes a section on Chitimacha."
 - type: book
+  title: Grammaire du Wolof contemporain
+  year: 2009
+  authors:
+    - last_name: Léopold
+      first_name: Jean
+  publisher: "L'Harmattan"
+  city: Paris
+  citation_key: Leopold2009
+  language: French
+- type: book
   title: The handbook of discourse analysis
   year: 2015
   publisher: Wiley-Blackwell
@@ -103,6 +113,7 @@
   authors:
     - last_name: Swadesh
       first_name: Morris
+  revision: "Mss.497.3 B63c G6.5"
   city: Philadelphia
   institution: American Philosophical Society Library
   series: American Council of Learned Societies Committee on Native American Languages
@@ -137,6 +148,28 @@
     - 'http://www.jstor.org/stable/413797'
   citation_key: HopperThompson1980
   notes: "Hopper & Thompson show that the major lexical categories are conferred by the discourse rather than semantically specified."
+- type: journal
+  title: 'NP recursion over time: Evidence from Indo-European'
+  abstract: "Some languages constrain the recursive embedding of NPs to some specific morphosyntactic types, allowing it, for example, only with genitives but not with bare juxtaposition. In Indo-European, every type of NP embedding—genitives, adjectivizers, adpositions, head marking, or juxtaposition—is unavailable for syntactic recursion in at least one attested language. In addition, attested pathways of change show that NP types that allow recursion can emerge and disappear in less than 1,000 years. This wide-ranging synchronic diversity and its high diachronic dynamics raise the possibility that at many hypothetical times in the history of the family recursive NP embedding could have been lost for all types simultaneously, parallel to what has occasionally been observed elsewhere (Everett 2005, Evans & Levinson 2009).\nPerforming Bayesian phylogenetic analyses on a sample of fifty-five languages from all branches of Indo-European, we show, however, that it is extremely unlikely for such a complete loss to ever have occurred. When one or more morphosyntactic types become unavailable for syntactic recursion in an NP, an unconstrained alternative type is very likely to develop in the same language. This suggests that, while diachronic pathways away from NP recursion clearly exist, there is a tendency—perhaps a universal one—to maintain or develop syntactic recursion in NPs. A likely explanation for this evolutionary bias is that recursively embedded phrases are not just an option that languages have (Fitch et al. 2005), but they are in fact preferred by our processing system."
+  source: Language
+  year: 2017
+  authors:
+    - last_name: Widmer
+      first_name: Manuel
+    - last_name: Auderset
+      first_name: Sandra
+    - last_name: Nichols
+      first_name: Johanna
+    - last_name: Widmer
+      first_name: Paul
+    - last_name: Bickel
+      first_name: Balthasar
+  pages: "799-826"
+  volume: "93"
+  issue: "4"
+  websites:
+    - 'https://muse.jhu.edu/article/680458'
+  citation_key: Widmeretal2017
 - type: thesis
   title: A functional grammar of Khatso
   abstract: "Khatso (kha⁵⁵tso³¹ 喀卓; also Katso, Kazhuo 卡卓, Gazhuo 嘎桌 and Yunnan Mongolian; ISO 639-3:kaf) is an endangered Ngwi (or Yi) language spoken in Xingmeng, a single farming village in Yunnan, China. Khatso speakers, who number about 5600 people, are descendants of the Mongolian soldiers Kublai Khan brought to Yunnan in the 13th century, and they still identify as Mongolian today. The language has evolved considerably through language contact, however, and is now considered part of the central branch of the Ngwi language family within the Tibeto-Burman phylum.\nAlmost all of the Khatso are bilingual in Mandarin or the local Yunnan dialect, because that is the only way to communicate with outsiders. Chinese is also the only language used in school and mastering it is necessary to pursue an education or find employment outside the town. Children continue to learn the language, but many parents teach them Chinese first and Khatso second. Moreover, there is no writing system; the language is not supported by print media or technology. As a result, the vitality of the language is eroding rapidly. This dissertation is part of larger project to document Khatso in order to help preserve and revitalize the language.\nThe research and analysis presented in this dissertation differ significantly from previous efforts to describe the language. In addition to identifying the basic building blocks – phonetics, phonology, morphology, syntax and the lexicon – there is an emphasis on capturing Khatso the way it is spoken in daily life. Natural language data were gathered during nearly a year of fieldwork in Xingmeng, via both audio and video recordings, creating a large multimedia corpus of the language. Transcriptions of the recordings formed the foundation for the investigation, which follows a discourse-functional approach to linguistic analysis. As a result, this grammar is the most comprehensive analysis of Khatso yet, providing an in-depth look at the features, structures and systems that interact to comprise this unique language. It is also the first major study of the language in English.\nKhatso is a tonal language that is both analytic and isolating. The phonology is similar to that of most Ngwi languages, with the exception of its relatively large eight-tone system. Tone sandhi is triggered by a variety of phonological, syntactic and discourse factors. There is very little morphology in the language, and most of the lexicon consists of monosyllabic and disyllabic monomorphemes. There is a rich classifier system, which also marks number and specific reference. Typical word order is SV/APV, though there is a great deal of flexibility in discourse. Simple noun modifiers follow nouns, but relative clauses precede them. Serial verb constructions are frequent, and may describe one- and two-event situations. There is no verbal inflection; the aspectual system is indicated by grammatical particles. There is also no evidential system, but both the interrogative and emphatic marker inventories include morphemes that convey epistemic information.\nThe most fundamental feature of Khatso is the fact that it is a pragmatics-based language, meaning that verbal semantics and discourse context are often more crucial than syntax in comprehending the language. Topic-comment structures and zero anaphora are frequent, regularly creating utterances in which key information is underspecified or absent. Some constructions, such as pragmatic agent marking, are triggered only when the context is ambiguous. And, many particles and constructions in Khatso are multifunctional, relying on context to clarify meaning. Essentially, syntax sets the stage for several potential interpretations and only the flow of information in a specific utterance points to the correct choice. Moreover, some constructions are only identifiable through contextual analysis, such as the many clause-combining structures that link phrases pragmatically without syntactic integration. Consequently, the discourse-functional approach used here has proven especially useful for painting a comprehensive picture of the Khatso language."
@@ -150,16 +183,6 @@
   source_type: Ph.D. dissertation
   department: Department of Linguistics
   notes: "Donlay's major focus is to show that discourse context and pragmatics are more important for understanding lexical categories in the language than are semantics or item-specific knowledge."
-- type: book
-  title: Grammaire du Wolof contemporain
-  year: 2009
-  authors:
-    - last_name: Léopold
-      first_name: Jean
-  publisher: "L'Harmattan"
-  city: Paris
-  citation_key: Leopold2009
-  language: French
 - type: web_page
   title: Language and the socialist-calculation problem
   source: Mises Daily
