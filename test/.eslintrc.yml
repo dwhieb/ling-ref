@@ -1,6 +1,10 @@
 extends: C:\Users\dwhieb\Coding\dev\.eslintrc
 parserOptions:
   ecmaVersion: 8
-  sourceType: module
+env:
+  browser: true
+globals:
+  Handlebars: true
 rules:
   require-jsdoc: off
+  valid-jsdoc: off
