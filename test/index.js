@@ -14,17 +14,33 @@ const createRenderer = (compile, list) => ref => {
 // Preformats a Mendeley reference before rendering
 /* eslint-disable no-param-reassign */
 const format = ref => {
-  if (!ref.year) ref.year = 0;
+
   if (ref.authors) {
     ref.sortKey = ref.authors[0].last_name;
-    if (ref.authors.length === 1 && ref.authors[0].first_name.endsWith('.')) {
+    if (ref.authors.length === 1 && ref.authors[0].first_name.endsWith(`.`)) {
       ref.authors[0].first_name = ref.authors[0].first_name.slice(0, -1);
     }
   }
+
+  if (ref.edition) {
+    switch (ref.edition) {
+      case `1`: ref.edition = `1<sup>st</sup>`; break;
+      case `2`: ref.edition = `2<sup>nd</sup>`; break;
+      case `3`: ref.edition = `3<sup>rd</sup>`; break;
+      default: ref.edition = `${ref.edition}<sup>th</sup>`;
+    }
+  }
+
   if (ref.editors) ref.sortKey = ref.editors[0].last_name;
+
+  if (ref.pages) ref.pages = ref.pages.replace(`-`, `–`);
+
+  if (!ref.year) ref.year = 0;
+
   if (!(`sortKey` in ref)) ref.sortKey = ``;
-  if (ref.pages) ref.pages = ref.pages.replace('-', '–');
+
   return ref;
+
 };
 /* eslint-enable no-param-reassign */
 
