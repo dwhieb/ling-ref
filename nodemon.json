@@ -1,0 +1,8 @@
+{
+  "events": {
+    "restart": "webpack & npm test"
+  },
+  "ignore": [
+    "helpers.bundled.js"
+  ]
+}

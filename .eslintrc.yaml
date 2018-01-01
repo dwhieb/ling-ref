@@ -3,8 +3,10 @@ parserOptions:
   ecmaVersion: 8
 env:
   browser: true
+  node: true
 globals:
   Handlebars: true
+  lingRef: true
 rules:
   camelcase: off
   require-jsdoc: off

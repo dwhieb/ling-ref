@@ -1,17 +1,17 @@
-// A comparator function (for using with sorts)
+// a comparator function (for using with sorts)
 const compare = (a, b) => {
   if (a < b) return -1;
   if (a > b) return +1;
   return 0;
 };
 
-// Creates the render function from the Handlebars template and the list element
+// creates the render function from the Handlebars template and the list element
 const createRenderer = (compile, list) => ref => {
   const html = compile(ref);
   list.insertAdjacentHTML(`beforeend`, html);
 };
 
-// Preformats a Mendeley reference before rendering
+// preformats a Mendeley reference before rendering
 /* eslint-disable no-param-reassign */
 const format = ref => {
 
@@ -44,26 +44,30 @@ const format = ref => {
 };
 /* eslint-enable no-param-reassign */
 
-// Fetches the test references and returns them as a JavaScript Array
+// fetches the test references and returns them as a JavaScript Array
 const getReferences = async () => {
   const res = await fetch(`./references.json`);
   return res.json();
 };
 
-// Fetches the Handlebars template and returns it as a String
+// fetches the Handlebars template and returns it as a String
 const getTemplate = async () => {
   const res      = await fetch(`../../dist/reference.hbs`);
   const template = await res.text();
   return Handlebars.compile(template);
 };
 
-// Sorts the Array of Mendeley references
+// sorts the Array of Mendeley references
 const sort = (a, b) => compare(a.sortKey.toLowerCase(), b.sortKey.toLowerCase())
   || compare(a.year, b.year)
   || compare(a.title, b.title);
 
-// Run the script
+// run the script
 (async () => {
+
+  // register Handlebars helper
+  const { is } = lingRef;
+  Handlebars.registerHelper({ is });
 
   const compile    = await getTemplate();
   const references = await getReferences();
