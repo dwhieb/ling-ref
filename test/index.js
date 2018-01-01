@@ -7,11 +7,13 @@ const compare = (a, b) => {
 
 // creates the render function from the Handlebars template and the list element
 const createRenderer = (compile, list) => ref => {
-  const html = compile(ref);
-  list.insertAdjacentHTML(`beforeend`, html);
+  const html   = compile(ref);
+  const li     = document.createElement(`li`);
+  li.innerHTML = html;
+  list.appendChild(li);
 };
 
-// preformats a Mendeley reference before rendering
+// preformats a Mendeley reference and adds a sorting key before rendering
 /* eslint-disable no-param-reassign */
 const format = ref => {
 
