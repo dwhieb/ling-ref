@@ -8,9 +8,10 @@ Created and maintained by [Daniel W. Hieber][2] (University of California, Santa
 
 <!-- BADGES -->
 <!-- Informational -->
-[![GitHub release](https://img.shields.io/github/release/dwhieb/ling-ref.svg)][6]
-[![GitHub license](https://img.shields.io/github/license/dwhieb/ling-ref.svg)][13]
+[![npm](https://img.shields.io/npm/v/ling-ref.svg)][14]
+[![npm](https://img.shields.io/npm/dt/ling-ref.svg)][14]
 [![GitHub issues](https://img.shields.io/github/issues/dwhieb/ling-ref.svg)][12]
+[![GitHub license](https://img.shields.io/github/license/dwhieb/ling-ref.svg)][13]
 
 <!-- Social -->
 [![GitHub stars](https://img.shields.io/github/stars/dwhieb/ling-ref.svg?style=social)](https://github.com/dwhieb/ling-ref/stargazers)
@@ -157,3 +158,4 @@ Found a bug? Have a suggestion for improvement? Have a question? [Open an issue 
 [11]: https://api.mendeley.com/apidocs/docs
 [12]: https://github.com/dwhieb/ling-ref/issues
 [13]: https://github.com/dwhieb/ling-ref/blob/master/LICENSE
+[14]: https://www.npmjs.com/package/ling-ref
