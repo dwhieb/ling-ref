@@ -23,7 +23,11 @@
     "url": "git+https://github.com/dwhieb/ling-ref.git"
   },
   "scripts": {
-    "test": "nodemon ../utilities/node/server.js ."
+    "bundle": "webpack",
+    "start": "node ../utilities/node/server.js",
+    "test": "jasmine JASMINE_CONFIG_PATH=test/jasmine.json"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "webpack": "^3.10.0"
+  }
 }
