@@ -15,6 +15,7 @@ const createRenderer = (compile, list) => ref => {
 /* eslint-disable no-param-reassign */
 const format = ref => {
 
+  // authors
   if (ref.authors) {
     ref.sortKey = ref.authors[0].last_name;
     if (ref.authors.length === 1 && ref.authors[0].first_name.endsWith(`.`)) {
@@ -22,6 +23,7 @@ const format = ref => {
     }
   }
 
+  // edition
   if (ref.edition) {
     switch (ref.edition) {
       case `1`: ref.edition = `1<sup>st</sup>`; break;
@@ -31,12 +33,16 @@ const format = ref => {
     }
   }
 
-  if (ref.editors) ref.sortKey = ref.editors[0].last_name;
+  // editors
+  if (ref.editors && !ref.sortKey) ref.sortKey = ref.editors[0].last_name;
 
+  // pages
   if (ref.pages) ref.pages = ref.pages.replace(`-`, `–`);
 
+  // year
   if (!ref.year) ref.year = 0;
 
+  // sortKey
   if (!(`sortKey` in ref)) ref.sortKey = ``;
 
   return ref;
