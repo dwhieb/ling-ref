@@ -1,3 +1,8 @@
+/* global
+  Handlebars,
+  lingRef,
+*/
+
 // a comparator function (for using with sorts)
 const compare = (a, b) => {
   if (a < b) return -1;
@@ -60,7 +65,7 @@ const getReferences = async () => {
 
 // fetches the Handlebars template and returns it as a String
 const getTemplate = async () => {
-  const res      = await fetch(`../../dist/reference.hbs`);
+  const res      = await fetch(`reference.hbs`);
   const template = await res.text();
   return Handlebars.compile(template);
 };

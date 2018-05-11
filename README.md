@@ -1,10 +1,12 @@
 # [ling-ref][1]
 
-A Handlebars template and helper that allows linguists to create an HTML bibliography from a set of [Mendeley][4] references, following the [unified stylesheet for linguistics][3]. This is useful for adding a linguistic bibliography to a website.
+ling-ref is a Handlebars template that allows linguists to create an HTML bibliography from a set of [Mendeley][4] references, following the [unified stylesheet for linguistics][3]. This is useful for adding a linguistic bibliography to a website.
 
 [View an example bibliography here.][5]
 
 Created and maintained by [Daniel W. Hieber][2] (University of California, Santa Barbara)
+
+Available under an [MIT license][9].
 
 <!-- BADGES -->
 <!-- Informational -->
@@ -22,7 +24,9 @@ Created and maintained by [Daniel W. Hieber][2] (University of California, Santa
 * [Using in the Browser](#using-in-the-browser)
 * [Using in Node](#using-in-node)
 * [Getting Mendeley Data](#getting-mendeley-data)
+* [HTML & Styling](#html-styling)
 * [Reporting Issues](#reporting-issues)
+* [Running Tests](#running-tests)
 
 ## Using in the Browser
 
@@ -30,23 +34,19 @@ Created and maintained by [Daniel W. Hieber][2] (University of California, Santa
 
 1. [Download Handlebars][7] and copy it to your project folder.
 
-1. [Download the latest release of ling-ref][6] and copy the contents of the `/dist` folder to your project folder.
+1. [Download the latest release of ling-ref][6] and copy the contents of the `/dist` folder to your project. Rename the folder to something identifiable such as `/lingref`.
 
-1. Add Handlebars and `helpers.bundle.js` (from the ling-ref `/dist` folder) to your page. If your project uses ES6 modules, use `helpers.mjs` instead, making sure your `<script>` tag . Place these before your project's other scripts.
+  **NB:** If your project uses native JavaScript modules, you may copy the contents of the `/src` folder to your project instead.
+
+1. Add the Handlebars and ling-ref scripts to your page, before your project's other scripts. This will make the `Handlebars` and `lingRef` objects available as global variables.
 
   ```html
   <script src=handlebars.js></script>
-
-  <script src=helpers.bundle.js></script>
-  <!-- OR -->
-  <script src=helpers.mjs type=application/javascript></script>
-
+  <script src=lingref/index.js></script>
   <script src=your-script.js></script>
   ```
 
-  This will make the `Handlebars` and `lingRef` global variables available to your script.
-
-1. Your project's JavaScript will need to do the following:
+1. Your project's JavaScript will need to do each of the following. Simple code examples are given for each step.
 
   - Register the ling-ref `is()` helper with Handlebars:
 
@@ -73,7 +73,7 @@ Created and maintained by [Daniel W. Hieber][2] (University of California, Santa
     ```js
     const list = document.getElementById(`reference-list`);
 
-    // you can also sort or preformat your references here
+    // You can also sort or preformat your references here
     references.forEach(data => {
       const html   = compile(data);
       const li     = document.createElement(`li`);
@@ -82,30 +82,23 @@ Created and maintained by [Daniel W. Hieber][2] (University of California, Santa
     });
     ```
 
-1. [View a complete example of rendering a bibliography using ling-ref here.][9]
-
-1. For more information on rendering templates with Handlebars, [see the Handlebars documentation][8].
-
 ## Using with Node
 
 1. Get your Mendeley references in JSON format. See [Getting Mendeley Data](#getting-mendeley-data) below.
 
-1. Install Handlebars in your project:
+1. Install Handlebars and ling-ref in your project:
 
   ```
-  npm i --save handlebars ling-ref
+  npm i handlebars ling-ref
   ```
-
-1. [Download the latest release of ling-ref][6] and copy the contents of the `/dist` folder to your project folder.
 
 1. Your Node script will then need to do the following:
 
-  - Import Handlebars, the Handlebars helpers, and the Handlebars template using `require()` (or ES6 imports):
+  - Import Handlebars and ling-ref:
 
     ```js
     const Handlebars = require('handlebars');
-    const helpers    = require('helpers.bundle.js');
-    const template   = require('reference.hbs');
+    const lingRef    = require('ling-ref');
     ```
 
   - Register the ling-ref `is()` helper with Handlebars:
@@ -115,13 +108,15 @@ Created and maintained by [Daniel W. Hieber][2] (University of California, Santa
     Handlebars.registerHelper({ is });
     ```
 
-  - Register the `reference.hbs` as a partial with Handlebars:
+  - Read the `reference.hbs` file from ling-ref's `/dist` (or `/src`) folder, and register it as a partial with Handlebars:
 
     ```js
-    Handlebars.registerPartial({ reference: template });
+    const reference = fs.readFileSync(`node_modules/ling-ref/dist/reference.hbs`, `utf8`);
+
+    Handlebars.registerPartial({ reference });
     ```
 
-1. Now you can use the partial in your server-side templates:
+1. Now you can use the reference partial in your server-side templates:
 
   ```hbs
   <ol class=reference-list>
@@ -135,14 +130,28 @@ Created and maintained by [Daniel W. Hieber][2] (University of California, Santa
 
 [Mendeley][4] is a software and service for managing bibliographic sources. Once you have added some sources to your database and synced them with Mendeley, you can retrieve your sources in JSON format from the [Mendeley API][10].
 
-The easiest way to get your references in JSON format is by using Mendeley's [API explorer][11]. Simply log in with your Mendeley credentials, and you can make requests to the Mendeley API. Most likely you will want to make a `GET /documents`. You can then copy-paste the JSON data from the response.
+The easiest way to get your references in JSON format is by using Mendeley's [API explorer][11]. Simply log in with your Mendeley credentials, and you can make requests to the Mendeley API. Most likely you will want to make a `GET /documents` request. You can then copy-paste the JSON data from the response.
 
 **IMPORTANT:** Make sure that the `view` parameter is set to `all` when requesting documents, whether using the API explorer or accessing the API programmatically.
 
 You can also access the Mendeley API programmatically, and retrieve documents in realtime before rendering your bibliography. See the [Mendeley developer documentation][10] for more information. Again, make sure that the `view` parameter is set to `all` when requesting documents, or your data will be missing fields.
 
+# HTML & Styling
+
+The HTML in the reference template has several classes applied that you can use to add CSS styling. Each citation is a `<p class=ref>` element containing a `<details>` element. Inside the `<details>` element are:
+
+  - `<summary class=citation>` - The actual citation for that reference.
+
+  - `<section class=abstract>` - The abstract for that reference, if present.
+
+  - `<section class=notes>` - The notes for that reference, if present.
+
 # Reporting Issues
 Found a bug? Have a suggestion for improvement? Have a question? [Open an issue on GitHub.][12]
+
+# Running Tests
+
+Run `npm test` from the command line. This will run tests on the JavaScript portion of the library in Node, and then start a local server. Then navigate to `http://localhost:3000/` in your browser to view a sample reference list generated using the ling-ref library. Enter `Ctrl + C` on the command line to stop the server.
 
 <!-- LINKS -->
 [1]: https://github.com/dwhieb/ling-ref#readme
@@ -153,7 +162,7 @@ Found a bug? Have a suggestion for improvement? Have a question? [Open an issue 
 [6]: https://github.com/dwhieb/ling-ref/releases
 [7]: http://handlebarsjs.com/installation.html
 [8]: http://handlebarsjs.com/
-[9]: https://github.com/dwhieb/ling-ref/blob/master/test/index.js
+[9]: https://opensource.org/licenses/MIT
 [10]: http://dev.mendeley.com
 [11]: https://api.mendeley.com/apidocs/docs
 [12]: https://github.com/dwhieb/ling-ref/issues

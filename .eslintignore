@@ -1,1 +1,1 @@
-*.bundled.js
+dist/*.js
