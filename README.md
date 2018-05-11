@@ -6,6 +6,8 @@ ling-ref is a Handlebars template that allows linguists to create an HTML biblio
 
 Created and maintained by [Daniel W. Hieber][2] (University of California, Santa Barbara)
 
+Available under an [MIT license][9].
+
 <!-- BADGES -->
 <!-- Informational -->
 [![npm](https://img.shields.io/npm/v/ling-ref.svg)][14]
@@ -24,6 +26,7 @@ Created and maintained by [Daniel W. Hieber][2] (University of California, Santa
 * [Getting Mendeley Data](#getting-mendeley-data)
 * [HTML & Styling](#html-styling)
 * [Reporting Issues](#reporting-issues)
+* [Running Tests](#running-tests)
 
 ## Using in the Browser
 
@@ -146,6 +149,10 @@ The HTML in the reference template has several classes applied that you can use 
 # Reporting Issues
 Found a bug? Have a suggestion for improvement? Have a question? [Open an issue on GitHub.][12]
 
+# Running Tests
+
+Run `npm test` from the command line. This will run tests on the JavaScript portion of the library in Node, and then start a local server. Then navigate to `http://localhost:3000/` in your browser to view a sample reference list generated using the ling-ref library. Enter `Ctrl + C` on the command line to stop the server.
+
 <!-- LINKS -->
 [1]: https://github.com/dwhieb/ling-ref#readme
 [2]: https://danielhieber.com
@@ -155,7 +162,7 @@ Found a bug? Have a suggestion for improvement? Have a question? [Open an issue 
 [6]: https://github.com/dwhieb/ling-ref/releases
 [7]: http://handlebarsjs.com/installation.html
 [8]: http://handlebarsjs.com/
-
+[9]: https://opensource.org/licenses/MIT
 [10]: http://dev.mendeley.com
 [11]: https://api.mendeley.com/apidocs/docs
 [12]: https://github.com/dwhieb/ling-ref/issues

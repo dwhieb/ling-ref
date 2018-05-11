@@ -15,6 +15,14 @@ module.exports = {
         from: path.resolve(__dirname, `src/reference.hbs`),
         to:   path.resolve(__dirname, `dist/reference.hbs`),
       },
+      {
+        from: path.resolve(__dirname, `src/reference.hbs`),
+        to:   path.resolve(__dirname, `test/reference.hbs`),
+      },
+      {
+        from: path.resolve(__dirname, `dist/index.js`),
+        to:   path.resolve(__dirname, `test/ling-ref.js`),
+      },
     ]),
   ],
 };
