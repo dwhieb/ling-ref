@@ -22,12 +22,16 @@
     "type": "git",
     "url": "git+https://github.com/dwhieb/ling-ref.git"
   },
+  "main": "dist/index.js",
   "scripts": {
     "build": "webpack",
-    "start": "node ../utilities/node/server.js",
     "test": "jasmine JASMINE_CONFIG_PATH=test/jasmine.json"
   },
   "devDependencies": {
+    "copy-webpack-plugin": "^4.5.1",
     "webpack-cli": "^2.1.3"
+  },
+  "peerDependencies": {
+    "handlebars": "^4.0.11"
   }
 }
