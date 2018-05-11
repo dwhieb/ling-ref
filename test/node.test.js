@@ -3,7 +3,7 @@
   prefer-arrow-callback,
 */
 
-const { is } = require('../dist/helpers.bundled.js');
+const { is } = require('../dist/index.js');
 
 describe('helpers', function() {
 
