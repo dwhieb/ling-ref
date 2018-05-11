@@ -1,11 +1,20 @@
-const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const path              = require('path');
 
 module.exports = {
-  entry: `./dist/helpers.js`,
+  entry: `./src/index.js`,
   output: {
-    filename:      `helpers.bundled.js`,
+    filename:      `index.js`,
     library:       `lingRef`,
     libraryTarget: `umd`,
     path:          path.resolve(__dirname, `dist`),
   },
+  plugins: [
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, `src/reference.hbs`),
+        to:   path.resolve(__dirname, `dist/reference.hbs`),
+      },
+    ]),
+  ],
 };

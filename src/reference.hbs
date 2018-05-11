@@ -1,0 +1,149 @@
+{{!-- NB: The use of multi-line comments avoids extra whitespace in the HTML, while retaining readability for the programmer. --}}
+
+{{!-- an individual person (author, editor), with appropriate punctuation depending on position in the list of authors/editors --}}
+{{#*inline "person"}}{{!--
+  if this is the first person in the list
+  --}}{{#if @first}}{{last_name}}{{#if first_name}}, {{first_name}}{{/if}}{{!--
+  if this is this last person in the list
+  --}}{{else if @last}} &amp; {{first_name}} {{last_name}}{{!--
+  if this is neither the first nor last person in the list
+  --}}{{else}}, {{#if first_name}}{{first_name}}{{/if}} {{last_name}}{{/if}}{{!--
+--}}{{/inline}}
+
+{{!-- author list --}}
+{{#*inline "authors"}}{{#each authors}}{{> person}}{{/each}}{{/inline}}
+
+{{!-- editor list --}}
+{{#*inline "editors"}}{{!--
+  --}}{{#each editors}}{{!--
+    --}}{{> person}}{{!-- the person data
+    --}}{{#if @last}}{{!-- add (ed.) or (eds.) after last editor
+      --}}{{#if @first}} (ed.){{!-- if there's only 1 editor, use (ed.)
+      --}}{{else}} (eds.){{!-- otherwise use (eds.)
+      --}}{{/if}}{{!--
+    --}}{{/if}}{{!--
+  --}}{{/each}}{{!--
+--}}{{/inline}}
+
+{{!-- publisher info --}}
+{{#*inline "publisherInfo"}}{{!--
+  --}}{{#if publisher}}{{publisher}}{{!--
+  --}}{{else if institution}}{{institution}}{{!--
+  --}}{{/if}}{{!--
+--}}{{/inline}}
+
+{{!-- series info --}}
+{{#*inline "seriesInfo"}}{{#if series}} ({{series}}{{#if volume}} {{volume}}{{else if revision}} {{revision}}{{/if}}){{/if}}{{/inline}}
+
+{{!-- the <p> element that contains the complete reference --}}
+<p data-key="{{citation_key}}" class=ref>
+  <details>
+
+    {{!-- citation --}}
+    <summary class=citation>
+
+      {{#is type "web_page"}}
+      {{else}}
+        {{#if websites}}<a href="{{websites.[0]}}" target=_blank rel="noreferrer noopener external">{{/if}}
+      {{/is}}
+
+        {{#is type "book"}}
+          {{#if authors}}{{> authors}}{{else if editors}}{{> editors}}{{else}}unknown{{/if}}.
+          {{year}}.
+          <cite>{{title}}</cite>{{#if edition}}, {{{edition}}} ed.{{/if}}{{> seriesInfo}}.
+          {{> publisherInfo}}.
+        {{/is}}
+
+        {{#is type "book_section"}}
+          {{> authors}}.
+          {{year}}.
+          {{title}}. In {{#if editors}}{{> editors}}{{/if}}, <cite>{{source}}</cite>{{!--
+          --}}{{#if edition}}, {{{edition}}} ed.{{/if}}{{> seriesInfo}}.
+          {{> publisherInfo}}.
+        {{/is}}
+
+        {{#is type "conference_proceedings"}}
+          {{> authors}}.
+          {{year}}.
+          {{title}}. {{#if editors}}In {{> editors}}, {{else}}Presented at {{/if}}<cite>{{source}}</cite>{{> seriesInfo}}.{{!--
+          --}}{{#if publisher}}{{> publisherInfo}}.{{/if}}
+        {{/is}}
+
+        {{#is type "encyclopedia_article"}}
+          {{> authors}}.
+          {{year}}.
+          {{title}}. In {{#if editors}}{{> editors}}{{/if}}, <cite>{{source}}</cite>{{> seriesInfo}}.
+          {{> publisherInfo}}.
+        {{/is}}
+
+        {{#is type "generic"}}
+
+          {{#if authors}}{{> authors}}{{else if editors}}{{> editors}}{{else}}unknown{{/if}}.
+          {{year}}.
+
+          {{#unless source}}<cite>{{/unless}}{{title}}{{#unless source}}</cite>{{/unless}}{{!--
+          --}}{{#if source}}. In <cite>{{source}}</cite>{{/if}}{{> seriesInfo}}.
+
+          {{#if source_type}}{{source_type}}.{{/if}}
+          {{#if user_context}}{{user_context}}.{{/if}}
+          {{> publisherInfo}}.
+
+        {{/is}}
+
+        {{#is type "magazine_article"}}
+          {{> authors}}.
+          {{year}}.
+          {{title}}.
+          <cite>{{source}}</cite> {{volume}}{{#if issue}}({{issue}}){{/if}}: {{pages}}.
+        {{/is}}
+
+        {{#is type "journal"}}
+          {{> authors}}.
+          {{year}}.
+          {{title}}.
+          <cite>{{source}}</cite> {{volume}}{{#if issue}}({{issue}}){{/if}}: {{pages}}.
+        {{/is}}
+
+        {{#is type "thesis"}}
+          {{> authors}}.
+          {{year}}.
+          <cite>{{title}}</cite>.
+          {{#if source_type}}{{source_type}}.{{/if}}
+          {{#if user_context}}{{user_context}}.{{/if}}
+          {{#if department}}{{department}}, {{/if}}{{institution}}.
+        {{/is}}
+
+        {{#is type "web_page"}}
+          {{> authors}}.
+          {{year}}.
+          {{title}}.
+          {{#if editors}}In {{> editors}},{{/if}}
+          <cite>{{source}}</cite>.
+          Accessible at: <a href="{{websites.[0]}}">{{websites.[0]}}</a>.
+        {{/is}}
+
+      {{#is type "web_page"}}
+      {{else}}
+        {{#if websites}}</a>{{/if}}
+      {{/is}}
+
+    </summary>
+
+    {{!-- abstract --}}
+    {{#if abstract}}
+      <section class=abstract>
+        <h1>Abstract</h1>
+        <div>{{abstract}}</div>
+      </section>
+    {{/if}}
+
+    {{!-- notes --}}
+    {{#if notes}}
+      <section class=notes>
+        <h1>Notes</h1>
+        <div>{{notes}}</div>
+      </section>
+    {{/if}}
+
+  </details>
+</p>
