@@ -14,13 +14,19 @@
 {{#*inline "authors"}}{{#each authors}}{{> person}}{{/each}}{{/inline}}
 
 {{!-- editor list --}}
-{{#*inline "editors"}}{{!--
-  --}}{{#each editors}}{{!--
-    --}}{{> person}}{{!-- the person data
-    --}}{{#if @last}}{{!-- add (ed.) or (eds.) after last editor
-      --}}{{#if @first}} (ed.){{!-- if there's only 1 editor, use (ed.)
-      --}}{{else}} (eds.){{!-- otherwise use (eds.)
-      --}}{{/if}}{{!--
+{{#*inline "editors"}}
+  {{#each editors}}
+    {{!-- add an ampersand before the last name --}}
+    {{#if @last}}
+      {{#unless @first}}&amp;{{/unless}}
+    {{/if}}
+    {{!-- name --}}
+    {{#if first_name}}{{first_name}} {{/if}}{{last_name}}{{!--
+    add a comma after each name
+    --}}{{#unless @last}},{{/unless}}{{!--
+    add the (ed(s).) after the list of names
+    --}}{{#if @last}}
+      {{#if @first}}(ed.){{else}}(eds.){{/if}}{{!--
     --}}{{/if}}{{!--
   --}}{{/each}}{{!--
 --}}{{/inline}}
