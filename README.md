@@ -24,7 +24,7 @@ Available under an [MIT license][9].
 * [Using in the Browser](#using-in-the-browser)
 * [Using in Node](#using-in-node)
 * [Getting Mendeley Data](#getting-mendeley-data)
-* [HTML & Styling](#html-styling)
+* [HTML & Styling](#html--styling)
 * [Reporting Issues](#reporting-issues)
 * [Running Tests](#running-tests)
 
@@ -138,7 +138,7 @@ You can also access the Mendeley API programmatically, and retrieve documents in
 
 # HTML & Styling
 
-The HTML in the reference template has several classes applied that you can use to add CSS styling. Each citation is a `<p class=ref>` element containing a `<details>` element. Inside the `<details>` element are:
+The HTML in the reference template has several classes applied that you can use to add CSS styling. Each citation is a `<details data-key="{{citation_key}}" class=ref>` element. Inside the `<details>` element are:
 
   - `<summary class=citation>` - The actual citation for that reference.
 
