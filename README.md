@@ -24,7 +24,7 @@ Available under an [MIT license][9].
 * [Using in the Browser](#using-in-the-browser)
 * [Using in Node](#using-in-node)
 * [Getting Mendeley Data](#getting-mendeley-data)
-* [HTML & Styling](#html-styling)
+* [HTML & Styling](#html--styling)
 * [Reporting Issues](#reporting-issues)
 * [Running Tests](#running-tests)
 
