@@ -3,12 +3,21 @@
   prefer-arrow-callback,
 */
 
-const { is } = require('../dist/index.js');
+const Handlebars = require('handlebars');
+const lingRef    = require('../src/index.js');
 
 describe('helpers', function() {
 
+  beforeAll(function() {
+    lingRef(Handlebars);
+  });
+
   it(`is`, function() {
-    expect(typeof is).toBe(`function`);
+    expect(typeof Handlebars.helpers.is).toBe(`function`);
+  });
+
+  it(`md`, function() {
+    expect(typeof Handlebars.helpers.md).toBe(`function`);
   });
 
 });
