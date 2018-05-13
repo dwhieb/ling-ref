@@ -1,8 +1,8 @@
 {
-  "events": {
-    "restart": "webpack & npm test"
-  },
+  "exec": "npm test",
+  "ext": "hbs,js",
   "ignore": [
-    "helpers.bundled.js"
+    "dist/*",
+    "test/*"
   ]
 }

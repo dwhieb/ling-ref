@@ -78,9 +78,8 @@ const sort = (a, b) => compare(a.sortKey.toLowerCase(), b.sortKey.toLowerCase())
 // run the script
 (async () => {
 
-  // register Handlebars helper
-  const { is } = lingRef;
-  Handlebars.registerHelper({ is });
+  // register Handlebars helpers
+  lingRef(Handlebars);
 
   const compile    = await getTemplate();
   const references = await getReferences();

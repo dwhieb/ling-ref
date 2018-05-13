@@ -47,11 +47,6 @@
   {{!-- citation --}}
   <summary class=citation>
 
-    {{#is type "web_page"}}
-    {{else}}
-      {{#if websites}}<a href="{{websites.[0]}}">{{/if}}
-    {{/is}}
-
       {{#is type "book"}}
         {{#if authors}}{{> authors}}{{else if editors}}{{> editors}}{{else}}unknown{{/if}}.
         {{year}}.
@@ -124,12 +119,12 @@
         {{title}}.
         {{#if editors}}In {{> editors}},{{/if}}
         <cite>{{source}}</cite>.
-        Accessible at: <a href="{{websites.[0]}}">{{websites.[0]}}</a>.
+        {{#if websites}}Accessible at: <a href="{{websites.[0]}}">{{websites.[0]}}</a>.{{/if}}
       {{/is}}
 
     {{#is type "web_page"}}
     {{else}}
-      {{#if websites}}</a>{{/if}}
+      {{#if websites}}(<a href="{{websites.[0]}}">link</a>){{/if}}
     {{/is}}
 
   </summary>
@@ -137,16 +132,16 @@
   {{!-- abstract --}}
   {{#if abstract}}
     <section class=abstract>
-      <h1>Abstract</h1>
-      <div>{{abstract}}</div>
+      <h4>Abstract</h4>
+      <div>{{md abstract}}</div>
     </section>
   {{/if}}
 
   {{!-- notes --}}
   {{#if notes}}
     <section class=notes>
-      <h1>Notes</h1>
-      <div>{{notes}}</div>
+      <h4>Notes</h4>
+      <div>{{md notes}}</div>
     </section>
   {{/if}}
 
