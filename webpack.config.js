@@ -1,8 +1,11 @@
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const path              = require('path');
+const CopyWebpackPlugin     = require('copy-webpack-plugin');
+const path                  = require('path');
+const UglifyJSWebpackPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-  entry: `./src/index.js`,
+  entry:     `./src/index.js`,
+  externals: `handlebars`,
+  mode:      `production`,
   output: {
     filename:      `index.js`,
     library:       `lingRef`,
@@ -24,5 +27,6 @@ module.exports = {
         to:   path.resolve(__dirname, `test/ling-ref.js`),
       },
     ]),
+    new UglifyJSWebpackPlugin(),
   ],
 };

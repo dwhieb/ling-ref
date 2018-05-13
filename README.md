@@ -36,8 +36,6 @@ Available under an [MIT license][9].
 
 1. [Download the latest release of ling-ref][6] and copy the contents of the `/dist` folder to your project. Rename the folder to something identifiable such as `/lingref`.
 
-  **NB:** If your project uses native JavaScript modules, you may copy the contents of the `/src` folder to your project instead.
-
 1. Add the Handlebars and ling-ref scripts to your page, before your project's other scripts. This will make the `Handlebars` and `lingRef` objects available as global variables.
 
   ```html
@@ -48,11 +46,10 @@ Available under an [MIT license][9].
 
 1. Your project's JavaScript will need to do each of the following. Simple code examples are given for each step.
 
-  - Register the ling-ref `is()` helper with Handlebars:
+  - Pass the Handlebars instance to lingRef to register the necessary helpers with Handlebars:
 
     ```js
-    const { is } = lingRef:
-    Handlebars.registerHelper({ is });
+    lingRef(Handlebars):
     ```
 
   - Fetch the `reference.hbs` template:
@@ -101,17 +98,16 @@ Available under an [MIT license][9].
     const lingRef    = require('ling-ref');
     ```
 
-  - Register the ling-ref `is()` helper with Handlebars:
+  - Pass the Handlebars instance to lingRef to register the necessary helpers:
 
     ```js
-    const { is } = lingRef:
-    Handlebars.registerHelper({ is });
+    lingRef(Handlebars):
     ```
 
-  - Read the `reference.hbs` file from ling-ref's `/dist` (or `/src`) folder, and register it as a partial with Handlebars:
+  - Read the `reference.hbs` file from ling-ref's `/src` folder, and register it as a partial with Handlebars:
 
     ```js
-    const reference = fs.readFileSync(`node_modules/ling-ref/dist/reference.hbs`, `utf8`);
+    const reference = fs.readFileSync(`node_modules/ling-ref/src/reference.hbs`, `utf8`);
 
     Handlebars.registerPartial({ reference });
     ```
@@ -145,6 +141,8 @@ The HTML in the reference template has several classes applied that you can use 
   - `<section class=abstract>` - The abstract for that reference, if present.
 
   - `<section class=notes>` - The notes for that reference, if present.
+
+Markdown text (including HTML) is supported in both the Abstract and Notes section.
 
 # Reporting Issues
 Found a bug? Have a suggestion for improvement? Have a question? [Open an issue on GitHub.][12]

@@ -1,6 +1,13 @@
-// A Handlebars helper that checks whether the first and second argument are the same
-const is = function(a, b, opts) {
-  return a === b ? opts.fn(this) : opts.inverse(this); // eslint-disable-line no-invalid-this
+/**
+ * Registers the helpers with Handlebars
+ */
+
+const createHelpers = require('./helpers');
+
+const register = hbs => {
+  const { is, md } = createHelpers(hbs);
+  hbs.registerHelper({ is, md });
+  return hbs;
 };
 
-export { is };
+module.exports = register;
