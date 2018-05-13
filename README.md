@@ -142,7 +142,7 @@ The HTML in the reference template has several classes applied that you can use 
 
   - `<section class=notes>` - The notes for that reference, if present.
 
-Markdown text (including HTML) is supported in both the Abstract and Notes section.
+Markdown text (including HTML) is supported in both the Abstract and Notes section. Both sections also contain an `<h4>` header with the text `Abstract` and `Notes` respectively.
 
 # Reporting Issues
 Found a bug? Have a suggestion for improvement? Have a question? [Open an issue on GitHub.][12]
