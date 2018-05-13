@@ -136,7 +136,7 @@ You can also access the Mendeley API programmatically, and retrieve documents in
 
 The HTML in the reference template has several classes applied that you can use to add CSS styling. Each citation is a `<details data-key="{{citation_key}}" class=ref>` element. Inside the `<details>` element are:
 
-  - `<summary class=citation>` - The actual citation for that reference.
+  - `<summary class=citation>` - The actual citation for that reference. References that have URLs will add a `(link)` text to the end of the citation, with a link to the first URL in the list.
 
   - `<section class=abstract>` - The abstract for that reference, if present.
 
