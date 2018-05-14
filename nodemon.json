@@ -1,6 +1,6 @@
 {
   "exec": "npm test",
-  "ext": "hbs,js",
+  "ext": "hbs,js,json",
   "ignore": [
     "dist/*",
     "test/*"

@@ -16,18 +16,32 @@
 {{!-- editor list --}}
 {{#*inline "editors"}}
   {{#each editors}}
+
     {{!-- add an ampersand before the last name --}}
     {{#if @last}}
       {{#unless @first}}&amp;{{/unless}}
     {{/if}}
+
     {{!-- name --}}
-    {{#if first_name}}{{first_name}} {{/if}}{{last_name}}{{!--
+    {{!-- use reversed names for first editor if no authors are present --}}
+    {{#if ../authors}}{{!--
+      --}}{{#if first_name}}{{first_name}} {{/if}}{{last_name}}{{!--
+    --}}{{else}}{{!--
+      --}}{{#if @first}}{{!--
+        --}}{{last_name}}{{#if first_name}}, {{first_name}}{{/if}}{{!--
+      --}}{{else}}{{!--
+        --}}{{#if first_name}}{{first_name}} {{/if}}{{last_name}}{{!--
+      --}}{{/if}}{{!--
+    --}}{{/if}}{{!--
+
     add a comma after each name
-    --}}{{#unless @last}},{{/unless}}{{!--
-    add the (ed(s).) after the list of names
-    --}}{{#if @last}}
+    --}}{{#unless @last}},{{/unless}}
+
+    {{!-- add the (ed(s).) after the list of names --}}
+    {{#if @last}}
       {{#if @first}}(ed.){{else}}(eds.){{/if}}{{!--
     --}}{{/if}}{{!--
+
   --}}{{/each}}{{!--
 --}}{{/inline}}
 
