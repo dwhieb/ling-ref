@@ -25,9 +25,6 @@ const format = ref => {
   // authors
   if (ref.authors) {
     ref.sortKey = ref.authors[0].last_name;
-    if (ref.authors.length === 1 && ref.authors[0].first_name.endsWith(`.`)) {
-      ref.authors[0].first_name = ref.authors[0].first_name.slice(0, -1);
-    }
   }
 
   // edition

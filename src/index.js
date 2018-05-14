@@ -5,8 +5,8 @@
 const createHelpers = require('./helpers');
 
 const register = hbs => {
-  const { is, md } = createHelpers(hbs);
-  hbs.registerHelper({ is, md });
+  const helpers = createHelpers(hbs);
+  hbs.registerHelper(helpers);
   return hbs;
 };
 

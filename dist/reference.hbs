@@ -46,6 +46,7 @@
 
   {{!-- citation --}}
   <summary class=citation>
+    {{#replace '(\.){2}' '.'}}{{!-- Removes any sequence of two periods in a row --}}
 
       {{#is type "book"}}
         {{#if authors}}{{> authors}}{{else if editors}}{{> editors}}{{else}}unknown{{/if}}.
@@ -125,6 +126,8 @@
         <cite>{{source}}</cite>.
         {{#if websites}}Accessible at: <a href="{{websites.[0]}}">{{websites.[0]}}</a>.{{/if}}
       {{/is}}
+
+    {{/replace}}{{!-- End replacement for double periods --}}
 
     {{#is type "web_page"}}
     {{else}}
