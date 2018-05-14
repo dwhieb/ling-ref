@@ -58,6 +58,9 @@
   --}}{{/each}}{{!--
 --}}{{/inline}}
 
+{{!-- pages --}}
+{{#*inline "pages"}}{{#replace '-' '–'}}{{pages}}{{/replace}}{{/inline}}
+
 {{!-- publisher info --}}
 {{#*inline "publisherInfo"}}{{!--
   --}}{{#if publisher}}{{publisher}}{{!--
@@ -122,14 +125,14 @@
         {{> authors}}.
         {{year}}.
         {{title}}.
-        <cite>{{source}}</cite> {{volume}}{{#if issue}}({{issue}}){{/if}}: {{pages}}.
+        <cite>{{source}}</cite> {{volume}}{{#if issue}}({{issue}}){{/if}}: {{> pages}}.
       {{/is}}
 
       {{#is type "journal"}}
         {{> authors}}.
         {{year}}.
         {{title}}.
-        <cite>{{source}}</cite> {{volume}}{{#if issue}}({{issue}}){{/if}}: {{pages}}.
+        <cite>{{source}}</cite> {{volume}}{{#if issue}}({{issue}}){{/if}}: {{> pages}}.
       {{/is}}
 
       {{#is type "thesis"}}
