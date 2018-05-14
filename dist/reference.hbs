@@ -13,23 +13,53 @@
 {{!-- author list --}}
 {{#*inline "authors"}}{{#each authors}}{{> person}}{{/each}}{{/inline}}
 
+{{!-- edition --}}
+{{#*inline "edition"}}
+  {{#is edition '1'}}
+    1<sup>st</sup>
+  {{else is edition '2'}}
+    2<sup>nd</sup>
+  {{else is edition '3'}}
+    3<sup>rd</sup>
+  {{else}}
+    {{edition}}<sup>th</sup>
+  {{/is}}
+{{/inline}}
+
 {{!-- editor list --}}
 {{#*inline "editors"}}
   {{#each editors}}
+
     {{!-- add an ampersand before the last name --}}
     {{#if @last}}
       {{#unless @first}}&amp;{{/unless}}
     {{/if}}
+
     {{!-- name --}}
-    {{#if first_name}}{{first_name}} {{/if}}{{last_name}}{{!--
+    {{!-- use reversed names for first editor if no authors are present --}}
+    {{#if ../authors}}{{!--
+      --}}{{#if first_name}}{{first_name}} {{/if}}{{last_name}}{{!--
+    --}}{{else}}{{!--
+      --}}{{#if @first}}{{!--
+        --}}{{last_name}}{{#if first_name}}, {{first_name}}{{/if}}{{!--
+      --}}{{else}}{{!--
+        --}}{{#if first_name}}{{first_name}} {{/if}}{{last_name}}{{!--
+      --}}{{/if}}{{!--
+    --}}{{/if}}{{!--
+
     add a comma after each name
-    --}}{{#unless @last}},{{/unless}}{{!--
-    add the (ed(s).) after the list of names
-    --}}{{#if @last}}
+    --}}{{#unless @last}},{{/unless}}
+
+    {{!-- add the (ed(s).) after the list of names --}}
+    {{#if @last}}
       {{#if @first}}(ed.){{else}}(eds.){{/if}}{{!--
     --}}{{/if}}{{!--
+
   --}}{{/each}}{{!--
 --}}{{/inline}}
+
+{{!-- pages --}}
+{{#*inline "pages"}}{{#replace '-' '–'}}{{pages}}{{/replace}}{{/inline}}
 
 {{!-- publisher info --}}
 {{#*inline "publisherInfo"}}{{!--
@@ -46,11 +76,12 @@
 
   {{!-- citation --}}
   <summary class=citation>
+    {{#replace '(\.){2}' '.'}}{{!-- Removes any sequence of two periods in a row --}}
 
       {{#is type "book"}}
         {{#if authors}}{{> authors}}{{else if editors}}{{> editors}}{{else}}unknown{{/if}}.
         {{year}}.
-        <cite>{{title}}</cite>{{#if edition}}, {{{edition}}} ed.{{/if}}{{> seriesInfo}}.
+        <cite>{{title}}</cite>{{#if edition}}, {{> edition}} ed.{{/if}}{{> seriesInfo}}.
         {{> publisherInfo}}.
       {{/is}}
 
@@ -58,7 +89,7 @@
         {{> authors}}.
         {{year}}.
         {{title}}. In {{#if editors}}{{> editors}}{{/if}}, <cite>{{source}}</cite>{{!--
-        --}}{{#if edition}}, {{{edition}}} ed.{{/if}}{{> seriesInfo}}.
+        --}}{{#if edition}}, {{> edition}} ed.{{/if}}{{> seriesInfo}}.
         {{> publisherInfo}}.
       {{/is}}
 
@@ -94,14 +125,14 @@
         {{> authors}}.
         {{year}}.
         {{title}}.
-        <cite>{{source}}</cite> {{volume}}{{#if issue}}({{issue}}){{/if}}: {{pages}}.
+        <cite>{{source}}</cite> {{volume}}{{#if issue}}({{issue}}){{/if}}: {{> pages}}.
       {{/is}}
 
       {{#is type "journal"}}
         {{> authors}}.
         {{year}}.
         {{title}}.
-        <cite>{{source}}</cite> {{volume}}{{#if issue}}({{issue}}){{/if}}: {{pages}}.
+        <cite>{{source}}</cite> {{volume}}{{#if issue}}({{issue}}){{/if}}: {{> pages}}.
       {{/is}}
 
       {{#is type "thesis"}}
@@ -113,6 +144,10 @@
         {{#if department}}{{department}}, {{/if}}{{institution}}.
       {{/is}}
 
+      {{#if identifiers.doi}}
+        DOI: <a href='https://doi.org/{{identifiers.doi}}'>{{identifiers.doi}}</a>.
+      {{/if}}
+
       {{#is type "web_page"}}
         {{> authors}}.
         {{year}}.
@@ -121,6 +156,8 @@
         <cite>{{source}}</cite>.
         {{#if websites}}Accessible at: <a href="{{websites.[0]}}">{{websites.[0]}}</a>.{{/if}}
       {{/is}}
+
+    {{/replace}}{{!-- End replacement for double periods --}}
 
     {{#is type "web_page"}}
     {{else}}

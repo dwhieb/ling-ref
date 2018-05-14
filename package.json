@@ -1,6 +1,6 @@
 {
   "name": "ling-ref",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "A Handlebars template for rendering a bibliography following the unified style sheet for linguistics",
   "keywords": [
     "Handlebars",
@@ -32,6 +32,8 @@
   "devDependencies": {
     "copy-webpack-plugin": "^4.5.1",
     "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "handlebars": "^4.0.11",
     "uglifyjs-webpack-plugin": "^1.2.5",
     "webpack": "^4.8.3",
     "webpack-cli": "^2.1.3"
