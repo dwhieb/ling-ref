@@ -113,6 +113,10 @@
         {{#if department}}{{department}}, {{/if}}{{institution}}.
       {{/is}}
 
+      {{#if identifiers.doi}}
+        DOI: <a href='https://doi.org/{{identifiers.doi}}'>{{identifiers.doi}}</a>.
+      {{/if}}
+
       {{#is type "web_page"}}
         {{> authors}}.
         {{year}}.
