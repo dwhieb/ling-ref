@@ -2,9 +2,25 @@
  * Handlebars helpers used by the ling-ref template
  */
 
+/* eslint-disable
+  no-invalid-this,
+*/
+
 const markdown = require('./markdown');
 
 const createHelpers = hbs => {
+
+  /**
+   * A Handlebars helper that replaces the specified regular expression with the given string
+   * @param  {RegExp} expression  The regular expression to search for
+   * @param  {String} replacement The String to replace matches of the regular expression with
+   * @param  {Object} opts        The Handlebars options hash
+   * @return {String}
+   */
+  const replace = function(expression, replacement, opts) {
+    const regexp = new RegExp(expression, `gu`);
+    return opts.fn(this).replace(regexp, replacement);
+  };
 
   /**
    * A Handlebars helper that checks whether the first and second arguments are the same
@@ -14,7 +30,7 @@ const createHelpers = hbs => {
    * @return {Boolean}
    */
   const is = function(a, b, opts) {
-    return a === b ? opts.fn(this) : opts.inverse(this); // eslint-disable-line no-invalid-this
+    return a === b ? opts.fn(this) : opts.inverse(this);
   };
 
   /**
@@ -30,6 +46,7 @@ const createHelpers = hbs => {
   return {
     is,
     md,
+    replace,
   };
 
 };

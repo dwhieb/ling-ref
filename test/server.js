@@ -4,16 +4,35 @@ This script runs a local server for serving static files from a folder. It can b
 node test/server.js [rootPath='.'] [port=3000]
 */
 
-const express = require('../node_modules/express');
-const http    = require('http');
+const express          = require('express');
+const exphbs           = require('express-handlebars');
+const handlebars       = require('handlebars');
+const http             = require('http');
+const lingRef          = require('../src');
+const { readFileSync } = require('fs');
+const references       = require('./references');
 
 const rootPath = process.argv[2] || '.';
 const port     = process.argv[3] || 3000;
 const app      = express();
 
+// Initialize ling-ref
+lingRef(handlebars);
+const reference = readFileSync(`test/reference.hbs`, `utf8`);
+handlebars.registerPartial({ reference });
+
+app.engine(`hbs`, exphbs({
+  defaultLayout: false,
+  handlebars,
+}));
+
 app.set(`port`, port);
+app.set(`view engine`, `hbs`);
+app.set(`views`, `test`);
 
 app.use(express.static(rootPath));
+
+app.get(`/test`, (req, res) => res.render(`test`, { references }));
 
 const server = http.createServer(app);
 
