@@ -136,15 +136,19 @@ You can also access the Mendeley API programmatically, and retrieve documents in
 
 # HTML & Styling
 
-The HTML in the reference template has several classes applied that you can use to add CSS styling. Each citation is a `<details data-key="{{citation_key}}" class=ref>` element. Inside the `<details>` element are:
+ling-ref supports two different HTML templates for references, depending on your preference. The HTML has several classes applied that you can use to add CSS styling.
 
-  - `<summary class=citation>` - The actual citation for that reference. References that have URLs will add a `(link)` text to the end of the citation, with a link to the first URL in the list.
+By default, each reference is wrapped in a `<section data-key="{{citation_key}}" class=ref>` tag. Inside this tag are:
+
+  - `<section class=citation>` - The actual citation for the reference. References that have URLs will add a `(link)` text to the end of the citation, with a link to the first URL in the `websites` field.
 
   - `<section class=abstract>` - The abstract for that reference, if present.
 
   - `<section class=notes>` - The notes for that reference, if present.
 
-Markdown text (including HTML) is supported in both the Abstract and Notes section. Both sections also contain an `<h4>` header with the text `Abstract` and `Notes` respectively.
+If you include value `{ details: true }` in the context passed to the Handlebars template, the reference will be wrapped in a `<details data-key="{{citation_key}}" class=ref>` tag instead of a `<section>` tag, and the citation will be a `<summary class=citation>` element rather than a `<section>` element. This allows users to expand / collapse individual references for more information. It also allows you to decide at the level of the individual reference whether you prefer the reference to be collapsible or not.
+
+Markdown text (including HTML) is supported in the title, abstract, and notes fields section. Both sections also contain an `<h4>` header with the text `Abstract` and `Notes` respectively.
 
 # Reporting Issues
 Found a bug? Have a suggestion for improvement? Have a question? [Open an issue on GitHub.][12]
