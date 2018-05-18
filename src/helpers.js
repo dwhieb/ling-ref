@@ -3,6 +3,7 @@
  */
 
 /* eslint-disable
+  eqeqeq,
   no-invalid-this,
 */
 
@@ -31,7 +32,7 @@ const createHelpers = hbs => {
    * @return {Boolean}
    */
   const is = function(a, b, opts) {
-    return a === b ? opts.fn(this) : opts.inverse(this);
+    return a == b ? opts.fn(this) : opts.inverse(this);
   };
 
   /**
@@ -59,9 +60,9 @@ const createHelpers = hbs => {
   };
 
   return {
-    is,
-    md,
-    replace,
+    'lr-is':      is,
+    'lr-md':      md,
+    'lr-replace': replace,
   };
 
 };
