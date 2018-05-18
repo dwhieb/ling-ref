@@ -3,6 +3,10 @@
   lingRef,
 */
 
+/* eslint-disable
+  no-param-reassign,
+ */
+
 // a comparator function (for using with sorts)
 const compare = (a, b) => {
   if (a < b) return -1;
@@ -12,6 +16,7 @@ const compare = (a, b) => {
 
 // creates the render function from the Handlebars template and the list element
 const createRenderer = (compile, list) => ref => {
+  ref.details  = true; // render using a details / summary element
   const html   = compile(ref);
   const li     = document.createElement(`li`);
   li.innerHTML = html;

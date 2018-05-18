@@ -71,11 +71,11 @@
 {{!-- series info --}}
 {{#*inline "seriesInfo"}}{{#if series}} ({{series}}{{#if volume}} {{volume}}{{else if revision}} {{revision}}{{/if}}){{/if}}{{/inline}}
 
-{{!-- the <p> element that contains the complete reference --}}
-<details data-key="{{citation_key}}" class=ref>
+{{!-- the wrapper element that contains the complete reference --}}
+<{{#if details}}details{{else}}section{{/if}} data-key="{{citation_key}}" class=ref>
 
   {{!-- citation --}}
-  <summary class=citation>
+  <{{#if details}}summary{{else}}section{{/if}} class=citation>
     {{#lr-replace '(\.){2}' '.'}}{{!-- Removes any sequence of two periods in a row --}}
 
       {{#lr-is type "book"}}
@@ -164,7 +164,7 @@
       {{#if websites}}(<a href="{{websites.[0]}}">link</a>){{/if}}
     {{/lr-is}}
 
-  </summary>
+  </{{#if details}}summary{{else}}section{{/if}}>
 
   {{!-- abstract --}}
   {{#if abstract}}
@@ -182,4 +182,4 @@
     </section>
   {{/if}}
 
-</details>
+</{{#if details}}details{{else}}section{{/if}}>
