@@ -1,5 +1,201 @@
 [
   {
+    "title": "Polycategoriality and zero derivation: Insights from Central Alaskan Yup'ik Eskimo",
+    "type": "book_section",
+    "authors": [{
+      "first_name": "Marianne",
+      "last_name": "Mithun"
+    }],
+    "year": 2017,
+    "source": "Lexical polycategoriality: Cross-linguistic, cross-theoretical, and language acquisition approaches",
+    "identifiers": {
+      "doi": "10.1075/slcs.182"
+    },
+    "pages": "155-176",
+    "publisher": "John Benjamins",
+    "city": "Amsterdam",
+    "series": "Studies in Language Companion Series 182",
+    "editors": [{
+      "first_name": "Valentina",
+      "last_name": "Vapnarsky"
+    }, {
+      "first_name": "Edy",
+      "last_name": "Veneziano"
+    }],
+    "id": "f4e8654c-6a18-3370-aca9-ecda0062df47",
+    "created": "2018-01-09T20:08:05.791Z",
+    "file_attached": false,
+    "profile_id": "16e9ee38-6fae-3fb0-bc64-3c2c28cb77dc",
+    "group_id": "217f7ec1-69ca-30e6-a2c0-73ff8eac6ef5",
+    "last_modified": "2018-05-17T19:02:48.683Z",
+    "tags": ["Inuit", "Yup'ik", "conversion", "derivation", "diachrony", "insubordination", "lexical categories", "lexical flexibility", "word classes", "zero derivation", "zero marking"],
+    "read": true,
+    "starred": false,
+    "authored": false,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Mithun2017",
+    "notes": "Mithun presents numerous potential cases of lexical flexibility at the root, stem, and fully-inflected word levels in Central Alaskan Yup'ik, and argues that these items are specified for lexical category in each case, and therefore should not be considered flexible. As a diagnostic for identifying lexical flexibility, Mithun notes that zero-derivation presupposes a basic/derived relationship, even if diachronically, whereas polycategoriality assumes a single abstract meaning. In the case of polycategoriality, more specific meanings in different constructions must be accounted for.<br/><br/>Mithun presents the following arguments in favor of zero-derivation for seemingly flexible forms in Yup'ik:<br/><br/>* Most roots are only used as nouns or verbs. 35% are nominal, 53% are verbal, and only 12% may be used as both.<br/><br/>* There are no semantic commonalities to which roots may be used for which function. The possible uses of a root must be memorized on a lexeme-specific basis.<br/><br/>* The semantic relationships between roots being used for different functions are not predictable, suggesting that the items in each pair constitute separate lexical items.<br/><br/>* The same kinds of semantic relationships hold between homophonous roots as appear in derived stems. Some roots can alternate classes with no derivation, while others cannot. This suggests that homophonous roots are actually the result of zero-derivation.<br/><br/>* Yup'ik derivational affixes are fully specified for both the lexical catgory they attach to and the lexical category that results. If two meanings are possible for a root, a derivational affix will utilize the meaning most prototypical to the category it selects for.<br/><br/>* Despite homophony between nominal and verbal uses of fully-inflected words, the two categories have different syntactic distributions.<br/><br/>* The homophony between nominal and verbal fully-inflected words is the result of insubordination and other diachronic processes.",
+    "private_publication": false,
+    "abstract": "The possibility of polycategorial lexical items, unspecified for category, raises interesting issues. One is the predictability of semantic relationships between polycategorial forms in predicating and referring uses. Another is the language- internal generality of the phenomenon, whether it necessarily holds of all units at a particular level. A third is its cross-linguistic generality and potential association with certain typological features. These issues are examined with examples from a language exhibiting striking similarities to the Mayan languages for which polycategoriality has recently been argued. Central Alaskan Yup’ik Eskimo appears to show robust polycategoriality at the root, stem, word, and clause level. A closer look indicates that the story is actually more interesting, and that the universality of polycategoriality remains an open question."
+  }, {
+    "title": "The internal economy of the Nootka word",
+    "type": "thesis",
+    "authors": [{
+      "first_name": "Morris",
+      "last_name": "Swadesh"
+    }],
+    "year": 1933,
+    "institution": "Yale University",
+    "department": "Department of Linguistics",
+    "id": "6e528ead-b661-3941-8443-b3480fa02d8e",
+    "created": "2018-01-24T18:09:17.689Z",
+    "file_attached": false,
+    "profile_id": "16e9ee38-6fae-3fb0-bc64-3c2c28cb77dc",
+    "group_id": "217f7ec1-69ca-30e6-a2c0-73ff8eac6ef5",
+    "last_modified": "2018-05-17T23:59:04.702Z",
+    "tags": ["Nuuchahnulth", "Wakashan", "lexical categories", "lexical flexibility", "word classes"],
+    "read": true,
+    "starred": false,
+    "authored": false,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Swadesh1933",
+    "user_context": "Ph.D. dissertation",
+    "notes": "Swadesh’s Ph.D. dissertation at Yale under Edward Sapir, this work provides a description of word structure and lexical semantics in Nuuchahnulth (a.k.a. Nootka; Wakashan). Swadesh famously makes the claim that “Normal words [in Nuuchahnulth] are all verbal in fundamental nature” (p. iv), and that they are all of one type (i.e. a single lexical category). However, Swadesh also notes various selectional restrictions for certain affixes which partition the lexicon, such as a strict separation between suffixes which may attach to numeral stems vs. non-numeral stems (p. 112), or that certain suffixes require a “substantive” stem (p. 113). As such, Swadesh's categorization of the lexicon is based on semantic meaning, and comprises the following: substantive (entity), state, action, location, time, quantity, and specification (indication). Swadesh partitions the lexicon in this way on the basis of the existence of a set of seven “special reference stems” which express these categories, and assumes that these stems represent a fundamental set of categories in the lexicon, despite there being no formal evidence elsewhere in the language. (Here, Swadesh anticipates what Levinson &amp; Burenhult (2009) refer to as a semplate, or a semantic template that operates in more than one area of the grammar.) Swadesh also discusses various idiosyncrasies in the lexicon, in particular *implicit derivation* and *specialization*. In implicit derivation, a derived stem takes on a meaning that is more than the sum of its parts, e.g. a derived form that literally means ‘knife in hand’ is in actual practice used to mean ‘having a knife in hand’ (p. iv; pp. 43ff.). Some of these cases fall into classes of regular patterns, and others are idiosyncratic. By specialization, Swadesh refers to the use of a derived stem to refer to something more specific than the meaning of its parts implies, e.g. the use of a form literally meaning ‘big creature’ to mean ‘whale’ (p. 54). Like implicit derivation, some cases of specialization follow certain general patterns, while others are idiosyncratic.",
+    "private_publication": false,
+    "abstract": "In Nootka, it is necessary to distinguish the word as a lexical unit from the word as a syntactic unit. The lexical word is a close-knit phonetic and semantic unit built out of a stem and any number of formative suffixes. As used in the sentence, the word may have the form of the basic lexical unit or may consist of the latter with the addition of any number of incremental suffixes which are phonetically and, to a certain extent, semantically distinguishable from formative suffixes.\\n\\n Incremental suffixes have the function of rounding out the word into a predication or otherwise preparing it for its function in the sentence; they express ideas of time, voice, mode, and person. Formative suffixes have the function of building up the lexical or unextended word on the basis of the stem; they include aspect formatives and derivational suffixes.\\n\\n Formal word types (parts of speech) in Nootka are two: particles and normal words. Particles include syntactic, imperative, and interjectional elements; they are characterized by a simple structure, a lack of aspect implication, and a limited capacity for extension by means of incremental suffixes. Normal words are all verbal in fundamental nature; they are formally characterized by a potentially polysynthetic structure, a definite aspect implication, and unlimited capacity for extension by means of incremental suffixes.\\n\\n The unextended word is semantically a potential predication concerning the potential subject of the word. (The term \"subject of the word\" is justified in Nootka because subject pronouns in the form of incremental suffixes are attachable to any normal word.) Some words constitute a unified potential predication, others a compound potential predication, depending on the type of derivational suffix employed in the construction of the word. Thus, ther is one type of suffix that always makes the word into a unified potential predication; suffixes of this type may be called governing suffixes. Another type of suffix sets a secondary potential predication alongside the original one and builds thus a compound potential predication; suffixes of this type may be called restrictive suffixes.\\n\\n The units in derivation are the underlying theme and the derivational suffix and the meaning of the derived form is a function of the meaning of these two units. To understand the semantics of derivation in Nootka, it is necessary to classify underlying themes and derivational suffixes according to semantic content. To this purpose, the following semantic classes are proposed: substantive (e.g., \"to be a house\"), state (e.g., \"to be erect\"), action (e.g., \"to jump\"), location (e.g., \"to be in the houes\"), time (e.g., \"to be at night\"), quantity (e.g., \"to be three\"), specification (e.g., \"to be this one\"). It is important to note that these are semantic and not formal classes; for, aside from particles, there is only one formal class, essentially verbal. The classification holds for derivational suffixes as well as themes except that the distinction bewteen governing and restrictive derivational suffixes is of even more fundamental importance. In addition to themes belonging to one or another of these classes, there are restricted themes (built up by means of restrictive suffixes and expressing compound potential predications) belonging to two or more semantic classes at once.\\n\\n The derivational economy of Nootka tends on the whole to be mechanical in nature, but two interfering processes need to be recognized: implicit derivation and specialization. By implicit derivation, a theme takes on the meaning of a derivative of that theme (e.g., \"knife in the hand\" is used for \"having a knife in the hand\"). By specialization, a theme that should have a general reference is used to refer to something more particular (e.g., \"big creature\" is the regular expression for \"whale\"). While specialization and some instances of implicit derivation are sporadic and unpredictable, there are certain types of implicit derivation that are actually or almost regular."
+  }, {
+    "title": "Introduction",
+    "type": "book_section",
+    "authors": [{
+      "first_name": "Franz",
+      "last_name": "Boas"
+    }],
+    "year": 1911,
+    "source": "Handbook of American Indian Languages, Part 1",
+    "pages": "1-84",
+    "publisher": "Smithsonian Institution",
+    "city": "Washington, D.C.",
+    "series": "Bureau of American Ethnology Bulletin 40",
+    "editors": [{
+      "first_name": "Franz",
+      "last_name": "Boas"
+    }],
+    "id": "f305693f-70ea-3bb6-bac8-94aedf680d2a",
+    "created": "2018-05-17T16:19:59.388Z",
+    "file_attached": false,
+    "profile_id": "16e9ee38-6fae-3fb0-bc64-3c2c28cb77dc",
+    "group_id": "217f7ec1-69ca-30e6-a2c0-73ff8eac6ef5",
+    "last_modified": "2018-05-17T16:35:18.394Z",
+    "tags": ["Native American languages", "typology"],
+    "read": false,
+    "starred": false,
+    "authored": false,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Boas1911",
+    "private_publication": false
+  }, {
+    "title": "A discourse approach to the cross-linguistic category 'Adjective'",
+    "type": "book_section",
+    "authors": [{
+      "first_name": "Sandra A.",
+      "last_name": "Thompson"
+    }],
+    "year": 1989,
+    "source": "Linguistic categorization",
+    "identifiers": {
+      "doi": "10.1075/cilt.61.16tho"
+    },
+    "pages": "245-266",
+    "publisher": "John Benjamins",
+    "city": "Amsterdam",
+    "series": "Current Issues in Linguistic Theory 61",
+    "editors": [{
+      "first_name": "Roberta",
+      "last_name": "Corrigan"
+    }, {
+      "first_name": "Fred R.",
+      "last_name": "Eckman"
+    }, {
+      "first_name": "Michael",
+      "last_name": "Noonan"
+    }],
+    "id": "7fa2a6f8-8f4e-340c-80eb-74e4a97b87b9",
+    "created": "2018-05-17T19:02:47.335Z",
+    "file_attached": false,
+    "profile_id": "16e9ee38-6fae-3fb0-bc64-3c2c28cb77dc",
+    "group_id": "217f7ec1-69ca-30e6-a2c0-73ff8eac6ef5",
+    "last_modified": "2018-05-17T19:04:07.266Z",
+    "tags": ["adjectives", "discourse", "lexical categories", "typology", "word classes"],
+    "read": false,
+    "starred": false,
+    "authored": false,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Thompson1989",
+    "private_publication": false
+  }, {
+    "title": "The discourse basis for lexical categories in Universal Grammar",
+    "type": "journal",
+    "authors": [{
+      "first_name": "Paul J.",
+      "last_name": "Hopper"
+    }, {
+      "first_name": "Sandra A.",
+      "last_name": "Thompson"
+    }],
+    "year": 1984,
+    "source": "Language",
+    "identifiers": {
+      "doi": "10.2307/413797"
+    },
+    "pages": "703-752",
+    "volume": "60",
+    "issue": "4",
+    "id": "842b9871-7d93-32f8-886f-fb968b03bee8",
+    "created": "2018-05-17T19:02:47.370Z",
+    "file_attached": false,
+    "profile_id": "16e9ee38-6fae-3fb0-bc64-3c2c28cb77dc",
+    "group_id": "217f7ec1-69ca-30e6-a2c0-73ff8eac6ef5",
+    "last_modified": "2018-05-17T19:04:07.257Z",
+    "tags": ["discourse", "lexical categories", "lexical flexibility", "word classes"],
+    "read": false,
+    "starred": false,
+    "authored": false,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "HopperThompson1984",
+    "private_publication": false,
+    "abstract": "Most linguists who have investigated linguistic categories from a universal viewpoint have accepted the existence of two basic parts of speech, *noun* and *verb*. Other categories are found to be only inconsistently represented; thus *adjective* is manifested in many languages as a class of stative verb. Furthermore, individual languages often have intermediate categories such as *gerund*, which cannot be unambiguously assigned to a single category. We suggest here that the basic categories N and V are to be viewed as universal lexicalizations of the prototypical discourse functions of 'discourse-manipulable participant' and 'reported event', respectively. We find that the grammars of languages tend to label the categories N and V with morphosyntactic markers which are iconically characteristic of these categories to the degree that a given instance of N or V approaches its prototypical function. In other words, the closer a form is to signaling this prime function, the more the language tends to recognize its function through morphemes typical of the category—e.g. deictic markers for N, tense markers for V. We conclude by suggesting that categoriality itself is another fundamental property of grammars which may be directly derived from discourse function."
+  }, {
+    "title": "Nuuchahnulth (Nootka) morphosyntax",
+    "type": "book",
+    "authors": [{
+      "first_name": "Toshihide",
+      "last_name": "Nakayama"
+    }],
+    "year": 2002,
+    "publisher": "University of California Press",
+    "city": "Berkeley",
+    "series": "University of California Publications in Linguistics 134",
+    "id": "65774b76-a522-386e-9b1e-4c15159bde04",
+    "created": "2018-05-17T19:02:47.507Z",
+    "file_attached": false,
+    "profile_id": "16e9ee38-6fae-3fb0-bc64-3c2c28cb77dc",
+    "group_id": "217f7ec1-69ca-30e6-a2c0-73ff8eac6ef5",
+    "last_modified": "2018-05-17T19:02:47.507Z",
+    "tags": ["Nuuchahnulth", "Wakashan", "discourse", "lexical flexibility", "word classes"],
+    "read": false,
+    "starred": false,
+    "authored": false,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Nakayama2002",
+    "private_publication": false
+  },
+  {
     "title": "A Choctaw reference grammar",
     "type": "book",
     "authors": [{
@@ -333,7 +529,7 @@
   {
     "type": "journal",
     "title": "NP recursion over time: Evidence from Indo-European",
-    "abstract": "Some languages constrain the recursive embedding of NPs to some specific morphosyntactic types, allowing it, for example, only with genitives but not with bare juxtaposition. In Indo-European, every type of NP embedding—genitives, adjectivizers, adpositions, head marking, or juxtaposition—is unavailable for syntactic recursion in at least one attested language. In addition, attested pathways of change show that NP types that allow recursion can emerge and disappear in less than 1,000 years. This wide-ranging synchronic diversity and its high diachronic dynamics raise the possibility that at many hypothetical times in the history of the family recursive NP embedding could have been lost for all types simultaneously, parallel to what has occasionally been observed elsewhere (Everett 2005, Evans & Levinson 2009).\nPerforming Bayesian phylogenetic analyses on a sample of fifty-five languages from all branches of Indo-European, we show, however, that it is extremely unlikely for such a complete loss to ever have occurred. When one or more morphosyntactic types become unavailable for syntactic recursion in an NP, an unconstrained alternative type is very likely to develop in the same language. This suggests that, while diachronic pathways away from NP recursion clearly exist, there is a tendency—perhaps a universal one—to maintain or develop syntactic recursion in NPs. A likely explanation for this evolutionary bias is that recursively embedded phrases are not just an option that languages have (Fitch et al. 2005), but they are in fact preferred by our processing system.",
+    "abstract": "Some languages constrain the recursive embedding of NPs to some specific morphosyntactic types, allowing it, for example, only with genitives but not with bare juxtaposition. In Indo-European, every type of NP embedding—genitives, adjectivizers, adpositions, head marking, or juxtaposition—is unavailable for syntactic recursion in at least one attested language. In addition, attested pathways of change show that NP types that allow recursion can emerge and disappear in less than 1,000 years. This wide-ranging synchronic diversity and its high diachronic dynamics raise the possibility that at many hypothetical times in the history of the family recursive NP embedding could have been lost for all types simultaneously, parallel to what has occasionally been observed elsewhere (Everett 2005, Evans & Levinson 2009).\n\nPerforming Bayesian phylogenetic analyses on a sample of fifty-five languages from all branches of Indo-European, we show, however, that it is extremely unlikely for such a complete loss to ever have occurred. When one or more morphosyntactic types become unavailable for syntactic recursion in an NP, an unconstrained alternative type is very likely to develop in the same language. This suggests that, while diachronic pathways away from NP recursion clearly exist, there is a tendency—perhaps a universal one—to maintain or develop syntactic recursion in NPs. A likely explanation for this evolutionary bias is that recursively embedded phrases are not just an option that languages have (Fitch et al. 2005), but they are in fact preferred by our processing system.",
     "source": "Language",
     "year": 2017,
     "authors": [

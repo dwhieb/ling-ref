@@ -27,21 +27,8 @@ const format = ref => {
     ref.sortKey = ref.authors[0].last_name;
   }
 
-  // edition
-  if (ref.edition) {
-    switch (ref.edition) {
-      case `1`: ref.edition = `1<sup>st</sup>`; break;
-      case `2`: ref.edition = `2<sup>nd</sup>`; break;
-      case `3`: ref.edition = `3<sup>rd</sup>`; break;
-      default: ref.edition = `${ref.edition}<sup>th</sup>`;
-    }
-  }
-
   // editors
   if (ref.editors && !ref.sortKey) ref.sortKey = ref.editors[0].last_name;
-
-  // pages
-  if (ref.pages) ref.pages = ref.pages.replace(`-`, `–`);
 
   // year
   if (!ref.year) ref.year = 0;

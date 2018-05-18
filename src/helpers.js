@@ -35,12 +35,14 @@ const createHelpers = hbs => {
 
   /**
    * A Handlebars helper that converts Markdown to HTML
-   * @param  {String} text The Markdown text to convert
+   * @param  {String} text   The Markdown text to convert
+   * @param  {String} inline Whether to use inline text or a block paragraph to render text in
    * @return {String}
    */
-  const md = function(text) {
+  const md = function(text, inline) {
     if (!text) return ``;
-    return new hbs.SafeString(markdown.render(text));
+    const method = inline === `inline` ? `renderInline` : `render`;
+    return new hbs.SafeString(markdown[method](text));
   };
 
   return {
