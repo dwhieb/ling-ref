@@ -6,7 +6,8 @@
   no-invalid-this,
 */
 
-const markdown = require('./markdown');
+const { decode } = require('he');
+const markdown   = require('./markdown');
 
 const createHelpers = hbs => {
 
@@ -34,13 +35,27 @@ const createHelpers = hbs => {
   };
 
   /**
-   * A Handlebars helper that converts Markdown to HTML
-   * @param  {String} text The Markdown text to convert
+   * A Handlebars helper that converts Markdown to HTML, and unescapes any escaped HTML characters, <br>s, or newlines.
+   * @param  {String} text   The Markdown text to convert
+   * @param  {String} inline Whether to use inline text or a block paragraph to render text in
    * @return {String}
    */
-  const md = function(text) {
+  const md = function(text, inline) {
+
     if (!text) return ``;
-    return new hbs.SafeString(markdown.render(text));
+
+    const method = inline === `inline` ? `renderInline` : `render`;
+
+    // Unescape HTML, <br> and newline characters
+    const breakRegExp   = new RegExp(`<br[ /]*>`, `gu`);
+    const newlineRegExp = new RegExp(`\\\\n`, `gu`);
+
+    const unescapedText = decode(text)
+    .replace(breakRegExp, `\n`)
+    .replace(newlineRegExp, `\n`);
+
+    return new hbs.SafeString(markdown[method](unescapedText));
+
   };
 
   return {
