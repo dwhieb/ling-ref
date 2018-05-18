@@ -132,6 +132,8 @@ The easiest way to get your references in JSON format is by using Mendeley's [AP
 
 You can also access the Mendeley API programmatically, and retrieve documents in realtime before rendering your bibliography. See the [Mendeley developer documentation][10] for more information. Again, make sure that the `view` parameter is set to `all` when requesting documents, or your data will be missing fields.
 
+**NOTE:** ling-ref will automatically parse HTML or Markdown that you include in the title, notes, or abstract fields of the reference.
+
 # HTML & Styling
 
 The HTML in the reference template has several classes applied that you can use to add CSS styling. Each citation is a `<details data-key="{{citation_key}}" class=ref>` element. Inside the `<details>` element are:
