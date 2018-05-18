@@ -30,8 +30,10 @@ app.set(`port`, port);
 app.set(`view engine`, `hbs`);
 app.set(`views`, `test`);
 
+// This route tests client-side templates
 app.use(express.static(rootPath));
 
+// This route tests server-side templates
 app.get(`/test`, (req, res) => res.render(`test`, { references }));
 
 const server = http.createServer(app);

@@ -15,15 +15,15 @@
 
 {{!-- edition --}}
 {{#*inline "edition"}}
-  {{#is edition '1'}}
+  {{#lr-is edition '1'}}
     1<sup>st</sup>
-  {{else is edition '2'}}
+  {{else lr-is edition '2'}}
     2<sup>nd</sup>
-  {{else is edition '3'}}
+  {{else lr-is edition '3'}}
     3<sup>rd</sup>
   {{else}}
     {{edition}}<sup>th</sup>
-  {{/is}}
+  {{/lr-is}}
 {{/inline}}
 
 {{!-- editor list --}}
@@ -59,7 +59,7 @@
 --}}{{/inline}}
 
 {{!-- pages --}}
-{{#*inline "pages"}}{{#replace '-' '–'}}{{pages}}{{/replace}}{{/inline}}
+{{#*inline "pages"}}{{#lr-replace '-' '–'}}{{pages}}{{/lr-replace}}{{/inline}}
 
 {{!-- publisher info --}}
 {{#*inline "publisherInfo"}}{{!--
@@ -71,106 +71,106 @@
 {{!-- series info --}}
 {{#*inline "seriesInfo"}}{{#if series}} ({{series}}{{#if volume}} {{volume}}{{else if revision}} {{revision}}{{/if}}){{/if}}{{/inline}}
 
-{{!-- the <p> element that contains the complete reference --}}
-<details data-key="{{citation_key}}" class=ref>
+{{!-- the wrapper element that contains the complete reference --}}
+<{{#if details}}details{{else}}section{{/if}} data-key="{{citation_key}}" class=ref>
 
   {{!-- citation --}}
-  <summary class=citation>
-    {{#replace '(\.){2}' '.'}}{{!-- Removes any sequence of two periods in a row --}}
+  <{{#if details}}summary{{else}}section{{/if}} class=citation>
+    {{#lr-replace '(\.){2}' '.'}}{{!-- Removes any sequence of two periods in a row --}}
 
-      {{#is type "book"}}
+      {{#lr-is type "book"}}
         {{#if authors}}{{> authors}}{{else if editors}}{{> editors}}{{else}}unknown{{/if}}.
         {{year}}.
-        <cite>{{title}}</cite>{{#if edition}}, {{> edition}} ed.{{/if}}{{> seriesInfo}}.
+        <cite>{{lr-md title 'inline'}}</cite>{{#if edition}}, {{> edition}} ed.{{/if}}{{> seriesInfo}}.
         {{> publisherInfo}}.
-      {{/is}}
+      {{/lr-is}}
 
-      {{#is type "book_section"}}
+      {{#lr-is type "book_section"}}
         {{> authors}}.
         {{year}}.
-        {{title}}. In {{#if editors}}{{> editors}}{{/if}}, <cite>{{source}}</cite>{{!--
+        {{lr-md title 'inline'}}. In {{#if editors}}{{> editors}}{{/if}}, <cite>{{source}}</cite>{{!--
         --}}{{#if edition}}, {{> edition}} ed.{{/if}}{{> seriesInfo}}.
         {{> publisherInfo}}.
-      {{/is}}
+      {{/lr-is}}
 
-      {{#is type "conference_proceedings"}}
+      {{#lr-is type "conference_proceedings"}}
         {{> authors}}.
         {{year}}.
-        {{title}}. {{#if editors}}In {{> editors}}, {{else}}Presented at {{/if}}<cite>{{source}}</cite>{{> seriesInfo}}.{{!--
+        {{lr-md title 'inline'}}. {{#if editors}}In {{> editors}}, {{else}}Presented at {{/if}}<cite>{{source}}</cite>{{> seriesInfo}}.{{!--
         --}}{{#if publisher}}{{> publisherInfo}}.{{/if}}
-      {{/is}}
+      {{/lr-is}}
 
-      {{#is type "encyclopedia_article"}}
+      {{#lr-is type "encyclopedia_article"}}
         {{> authors}}.
         {{year}}.
-        {{title}}. In {{#if editors}}{{> editors}}{{/if}}, <cite>{{source}}</cite>{{> seriesInfo}}.
+        {{lr-md title 'inline'}}. In {{#if editors}}{{> editors}}{{/if}}, <cite>{{source}}</cite>{{> seriesInfo}}.
         {{> publisherInfo}}.
-      {{/is}}
+      {{/lr-is}}
 
-      {{#is type "generic"}}
+      {{#lr-is type "generic"}}
 
         {{#if authors}}{{> authors}}{{else if editors}}{{> editors}}{{else}}unknown{{/if}}.
         {{year}}.
 
-        {{#unless source}}<cite>{{/unless}}{{title}}{{#unless source}}</cite>{{/unless}}{{!--
+        {{#unless source}}<cite>{{/unless}}{{lr-md title 'inline'}}{{#unless source}}</cite>{{/unless}}{{!--
         --}}{{#if source}}. In <cite>{{source}}</cite>{{/if}}{{> seriesInfo}}.
 
         {{#if source_type}}{{source_type}}.{{/if}}
         {{#if user_context}}{{user_context}}.{{/if}}
         {{> publisherInfo}}.
 
-      {{/is}}
+      {{/lr-is}}
 
-      {{#is type "magazine_article"}}
+      {{#lr-is type "magazine_article"}}
         {{> authors}}.
         {{year}}.
-        {{title}}.
+        {{lr-md title 'inline'}}.
         <cite>{{source}}</cite> {{volume}}{{#if issue}}({{issue}}){{/if}}: {{> pages}}.
-      {{/is}}
+      {{/lr-is}}
 
-      {{#is type "journal"}}
+      {{#lr-is type "journal"}}
         {{> authors}}.
         {{year}}.
-        {{title}}.
+        {{lr-md title 'inline'}}.
         <cite>{{source}}</cite> {{volume}}{{#if issue}}({{issue}}){{/if}}: {{> pages}}.
-      {{/is}}
+      {{/lr-is}}
 
-      {{#is type "thesis"}}
+      {{#lr-is type "thesis"}}
         {{> authors}}.
         {{year}}.
-        <cite>{{title}}</cite>.
+        <cite>{{lr-md title 'inline'}}</cite>.
         {{#if source_type}}{{source_type}}.{{/if}}
         {{#if user_context}}{{user_context}}.{{/if}}
         {{#if department}}{{department}}, {{/if}}{{institution}}.
-      {{/is}}
+      {{/lr-is}}
 
       {{#if identifiers.doi}}
         DOI: <a href='https://doi.org/{{identifiers.doi}}'>{{identifiers.doi}}</a>.
       {{/if}}
 
-      {{#is type "web_page"}}
+      {{#lr-is type "web_page"}}
         {{> authors}}.
         {{year}}.
-        {{title}}.
+        {{lr-md title 'inline'}}.
         {{#if editors}}In {{> editors}},{{/if}}
         <cite>{{source}}</cite>.
         {{#if websites}}Accessible at: <a href="{{websites.[0]}}">{{websites.[0]}}</a>.{{/if}}
-      {{/is}}
+      {{/lr-is}}
 
-    {{/replace}}{{!-- End replacement for double periods --}}
+    {{/lr-replace}}{{!-- End replacement for double periods --}}
 
-    {{#is type "web_page"}}
+    {{#lr-is type "web_page"}}
     {{else}}
       {{#if websites}}(<a href="{{websites.[0]}}">link</a>){{/if}}
-    {{/is}}
+    {{/lr-is}}
 
-  </summary>
+  </{{#if details}}summary{{else}}section{{/if}}>
 
   {{!-- abstract --}}
   {{#if abstract}}
     <section class=abstract>
       <h4>Abstract</h4>
-      <div>{{md abstract}}</div>
+      <div>{{lr-md abstract}}</div>
     </section>
   {{/if}}
 
@@ -178,8 +178,8 @@
   {{#if notes}}
     <section class=notes>
       <h4>Notes</h4>
-      <div>{{md notes}}</div>
+      <div>{{lr-md notes}}</div>
     </section>
   {{/if}}
 
-</details>
+</{{#if details}}details{{else}}section{{/if}}>
