@@ -1,6 +1,5 @@
-const CopyWebpackPlugin     = require('copy-webpack-plugin');
-const path                  = require('path');
-const UglifyJSWebpackPlugin = require('uglifyjs-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const path              = require('path');
 
 module.exports = {
   entry:     `./src/index.js`,
@@ -26,7 +25,6 @@ module.exports = {
         from: path.resolve(__dirname, `dist/index.js`),
         to:   path.resolve(__dirname, `test/ling-ref.js`),
       },
-    ]),
-    new UglifyJSWebpackPlugin(),
+    ])
   ],
 };
