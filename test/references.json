@@ -598,5 +598,41 @@
     ],
     "publisher": "Ludwig von Mises Institute",
     "citation_key": "Hieber2010"
+  },
+  {
+    "title": "Designing linguistic databases: A short primer for linguistics",
+    "type": "generic",
+    "authors": [
+      {
+        "first_name": "Alexis",
+        "last_name": "Dimitriadis"
+      },
+      {
+        "first_name": "Simon",
+        "last_name": "Musgrave"
+      }
+    ],
+    "year": 2009,
+    "websites": [
+      "https://www.academia.edu/666440/Designing_linguistic_databases_A_primer_for_linguists"
+    ],
+    "id": "7af12467-91a6-3d09-8c1c-47736ef3c937",
+    "created": "2019-01-23T18:13:35.790Z",
+    "file_attached": false,
+    "profile_id": "16e9ee38-6fae-3fb0-bc64-3c2c28cb77dc",
+    "group_id": "34b39c86-4a68-3384-b22f-130017136242",
+    "last_modified": "2019-01-23T18:16:47.613Z",
+    "tags": [
+      "data management",
+      "digital linguistics"
+    ],
+    "read": true,
+    "starred": false,
+    "authored": false,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "DimitriadisMusgrave2009",
+    "source_type": "Unpublished manuscript",
+    "private_publication": false
   }
 ]
