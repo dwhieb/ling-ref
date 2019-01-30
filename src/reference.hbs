@@ -99,8 +99,7 @@
       {{#lr-is type "conference_proceedings"}}
         {{> authors}}.
         {{> year}}.
-        {{lr-md title 'inline'}}. {{#if editors}}In {{> editors}},{{/if}} <cite>{{source}}</cite>{{> seriesInfo}}.{{!--
-          --}}{{> publisherInfo}}.
+        {{lr-md title 'inline'}}. {{#if editors}}In {{> editors}},{{/if}} <cite>{{source}}</cite>{{> seriesInfo}}.{{#if publisherInfo}} {{> publisherInfo}}.{{/if}}
       {{/lr-is}}
 
       {{#lr-is type "encyclopedia_article"}}
