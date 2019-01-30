@@ -151,6 +151,7 @@ If you include value `{ details: true }` in the context passed to the Handlebars
 Markdown text (including HTML) is supported in the title, abstract, and notes fields section. Both sections also contain an `<h4>` header with the text `Abstract` and `Notes` respectively.
 
 # Reporting Issues
+
 Found a bug? Have a suggestion for improvement? Have a question? [Open an issue on GitHub.][12]
 
 # Running Tests

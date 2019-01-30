@@ -10,6 +10,21 @@
 const { decode } = require('he');
 const markdown   = require('./markdown');
 
+const months = {
+  1: `January`,
+  2: `February`,
+  3: `March`,
+  4: `April`,
+  5: `May`,
+  6: `June`,
+  7: `July`,
+  8: `August`,
+  9: `September`,
+  10: `October`,
+  11: `November`,
+  12: `December`,
+};
+
 const createHelpers = hbs => {
 
   /**
@@ -59,9 +74,14 @@ const createHelpers = hbs => {
 
   };
 
+  const month = function(month) {
+    return months[month] || month;
+  }
+
   return {
     'lr-is':      is,
     'lr-md':      md,
+    'lr-month':   month,
     'lr-replace': replace,
   };
 

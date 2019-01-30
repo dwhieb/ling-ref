@@ -66,8 +66,8 @@
 
 {{!-- publisher info --}}
 {{#*inline "publisherInfo"}}{{!--
-  --}}{{#if publisher}}{{publisher}}{{!--
-  --}}{{else if institution}}{{institution}}{{!--
+  --}}{{#if publisher}}{{publisher}}.{{!--
+  --}}{{else if institution}}{{institution}}.{{!--
   --}}{{/if}}{{!--
 --}}{{/inline}}
 
@@ -85,7 +85,7 @@
         {{#if authors}}{{> authors}}{{else if editors}}{{> editors}}{{else}}unknown{{/if}}.
         {{> year}}.
         <cite>{{lr-md title 'inline'}}</cite>{{#if edition}}, {{> edition}} ed.{{/if}}{{> seriesInfo}}.
-        {{> publisherInfo}}.
+        {{> publisherInfo}}
       {{/lr-is}}
 
       {{#lr-is type "book_section"}}
@@ -93,20 +93,25 @@
         {{> year}}.
         {{lr-md title 'inline'}}. In {{#if editors}}{{> editors}}{{/if}}, <cite>{{source}}</cite>{{!--
         --}}{{#if edition}}, {{> edition}} ed.{{/if}}{{> seriesInfo}}.
-        {{> publisherInfo}}.
+        {{> publisherInfo}}
       {{/lr-is}}
 
       {{#lr-is type "conference_proceedings"}}
         {{> authors}}.
         {{> year}}.
-        {{lr-md title 'inline'}}. {{#if editors}}In {{> editors}},{{/if}} <cite>{{source}}</cite>{{> seriesInfo}}.{{#if publisherInfo}} {{> publisherInfo}}.{{/if}}
+        {{lr-md title 'inline'}}.
+        <cite>{{source}}</cite>{{> seriesInfo}}{{!--
+          --}}{{#if month}}, {{lr-month month}}{{#if day}} {{day}}{{/if}}{{/if}}{{!--
+          --}}{{#if institution}}, {{institution}}{{/if}}{{!--
+          --}}{{#if city}}, {{city}}{{/if}}.
+        {{> publisherInfo}}
       {{/lr-is}}
 
       {{#lr-is type "encyclopedia_article"}}
         {{> authors}}.
         {{> year}}.
         {{lr-md title 'inline'}}. In {{#if editors}}{{> editors}}{{/if}}, <cite>{{source}}</cite>{{> seriesInfo}}.
-        {{> publisherInfo}}.
+        {{> publisherInfo}}
       {{/lr-is}}
 
       {{#lr-is type "generic"}}
@@ -119,8 +124,6 @@
 
         {{#if source_type}}{{source_type}}.{{/if}}
         {{#if user_context}}{{user_context}}.{{/if}}
-        {{#if city}}{{city}}.{{/if}}
-        {{#if institution}}{{institution}}.{{/if}}
 
       {{/lr-is}}
 
@@ -135,7 +138,7 @@
         {{> authors}}.
         {{> year}}.
         {{lr-md title 'inline'}}.
-        <cite>{{source}}</cite> {{volume}}{{#if issue}}({{issue}}){{/if}}: {{> pages}}.
+        {{#if editors}}In {{> editors}}, {{/if}}<cite>{{source}}</cite> {{volume}}{{#if issue}}({{issue}}){{/if}}: {{> pages}}.
       {{/lr-is}}
 
       {{#lr-is type "thesis"}}
