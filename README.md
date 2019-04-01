@@ -1,23 +1,18 @@
 # ling-ref
 
-ling-ref is a Handlebars template that allows linguists to create an HTML bibliography from a set of [Mendeley][4] references, following the [unified stylesheet for linguistics][3]. This is useful for adding a linguistic bibliography to a website.
+`ling-ref` is a Handlebars template for rendering bibliographic references stored in [Mendeley][Mendeley] following the [unified style sheet for linguistics][unified], and accompanying JavaScript library allowing users to use the template programmatically. This is useful for adding a linguistic bibliography to a website.
 
-[View an example bibliography here.][5]
-
-Created and maintained by [Daniel W. Hieber][2] (University of California, Santa Barbara)
+Created and maintained by [Daniel W. Hieber][DWH] (University of California, Santa Barbara)
 
 Available under an [MIT license][9].
 
 <!-- BADGES -->
-<!-- Informational -->
-[![npm](https://img.shields.io/npm/v/ling-ref.svg)][14]
-[![npm](https://img.shields.io/npm/dt/ling-ref.svg)][14]
-[![GitHub issues](https://img.shields.io/github/issues/dwhieb/ling-ref.svg)][12]
-[![GitHub license](https://img.shields.io/github/license/dwhieb/ling-ref.svg)][13]
 
-<!-- Social -->
-[![GitHub stars](https://img.shields.io/github/stars/dwhieb/ling-ref.svg?style=social)](https://github.com/dwhieb/ling-ref/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/dwhieb/ling-ref.svg?style=social)](https://github.com/dwhieb/ling-ref/network)
+[![npm](https://img.shields.io/npm/v/ling-ref.svg)][npm]
+[![npm](https://img.shields.io/npm/dt/ling-ref.svg)][npm]
+[![GitHub issues](https://img.shields.io/github/issues/dwhieb/ling-ref.svg)][isues]
+[![GitHub license](https://img.shields.io/github/license/dwhieb/ling-ref.svg)][license]
+[![GitHub stars](https://img.shields.io/github/stars/dwhieb/ling-ref.svg?style=social)][GitHub]
 
 ## Contents
 
@@ -159,10 +154,15 @@ Found a bug? Have a suggestion for improvement? Have a question? [Open an issue 
 Run `npm test` from the command line. This will run tests on the JavaScript portion of the library in Node, and then start a local server. Then navigate to `http://localhost:3000/` in your browser to view a sample reference list generated using the ling-ref library. Enter `Ctrl + C` on the command line to stop the server.
 
 <!-- LINKS -->
-[1]: https://github.com/dwhieb/ling-ref#readme
-[2]: https://danielhieber.com
-[3]: https://www.linguisticsociety.org/resource/unified-style-sheet
-[4]: https://www.mendeley.com
+
+[DWH]:      https://danielhieber.com
+[GitHub]:   https://github.com/dwhieb/ling-ref
+[issues]:   https://github.com/dwhieb/ling-ref/issues
+[license]:  https://github.com/dwhieb/ling-ref/blob/master/LICENSE.md
+[Mendeley]: https://www.mendeley.com
+[npm]:      https://www.npmjs.com/package/ling-ref
+[unified]:  https://www.linguisticsociety.org/resource/unified-style-sheet
+
 [5]: https://danielhieber.com/bibliographies/flexibility
 [6]: https://github.com/dwhieb/ling-ref/releases
 [7]: http://handlebarsjs.com/installation.html
@@ -170,6 +170,3 @@ Run `npm test` from the command line. This will run tests on the JavaScript port
 [9]: https://opensource.org/licenses/MIT
 [10]: http://dev.mendeley.com
 [11]: https://api.mendeley.com/apidocs/docs
-[12]: https://github.com/dwhieb/ling-ref/issues
-[13]: https://github.com/dwhieb/ling-ref/blob/master/LICENSE
-[14]: https://www.npmjs.com/package/ling-ref
