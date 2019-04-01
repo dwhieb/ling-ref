@@ -1,4 +1,4 @@
-# [ling-ref][1]
+# ling-ref
 
 ling-ref is a Handlebars template that allows linguists to create an HTML bibliography from a set of [Mendeley][4] references, following the [unified stylesheet for linguistics][3]. This is useful for adding a linguistic bibliography to a website.
 
