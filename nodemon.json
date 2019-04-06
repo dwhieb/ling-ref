@@ -2,7 +2,6 @@
   "exec": "npm test",
   "ext": "hbs,js,json",
   "ignore": [
-    "dist/*",
     "test/*"
   ]
 }

@@ -26,7 +26,8 @@
   "module": "src/index.js",
   "scripts": {
     "build": "webpack",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "test": "cd test && static-server -p 3100 -c \"*\""
   },
   "dependencies": {},
   "devDependencies": {
