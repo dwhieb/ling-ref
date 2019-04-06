@@ -1,9 +1,8 @@
 {
-  "exec": "npm run build && npm test",
-  "ext": "hbs,js,json",
+  "exec": "npm test",
+  "ext": "hbs,js,yml",
   "ignore": [
     "handlebars.js",
-    "reference.hbs",
-    "LingRef.js"
+    "reference.hbs"
   ]
 }

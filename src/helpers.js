@@ -7,10 +7,6 @@
   no-invalid-this,
 */
 
-const { decode } = require(`he`);
-const handlebars = require(`handlebars`);
-const markdown   = require(`./markdown`);
-
 const months = {
   1:  `January`,
   2:  `February`,
@@ -38,30 +34,6 @@ function is(a, b, opts) {
 }
 
 /**
- * Converts Markdown to HTML, and unescapes any escaped HTML characters, <br>s, or newlines.
- * @param  {String} text   The Markdown text to convert
- * @param  {String} inline Whether to use inline text or a block paragraph to render text into. Must be set to "inline" to render inline
- * @return {String}        Returns the HTML string
- */
-function md(text, inline) {
-
-  if (!text) return ``;
-
-  const method = inline === `inline` ? `renderInline` : `render`;
-
-  // Unescape HTML, <br> and newline characters
-  const breakRegExp   = new RegExp(`<br[ /]*>`, `gu`);
-  const newlineRegExp = new RegExp(`\\\\n`, `gu`);
-
-  const unescapedText = decode(text)
-  .replace(breakRegExp, `\n`)
-  .replace(newlineRegExp, `\n`);
-
-  return new handlebars.SafeString(markdown[method](unescapedText));
-
-}
-
-/**
  * Converts a numeric representation of a month to a string
  * @param  {Integer} m The number of the month
  * @return {String}    The name of the month for that number
@@ -84,7 +56,6 @@ function replace(expression, replacement, opts) {
 
 module.exports = {
   'lr-is':      is,
-  'lr-md':      md,
   'lr-month':   month,
   'lr-replace': replace,
 };

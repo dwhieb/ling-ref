@@ -25,20 +25,22 @@
   "engines": {
     "node": "11.x"
   },
-  "main": "src/index.js",
+  "main": "src/helpers.js",
   "scripts": {
-    "docs": "node build/docs.js",
-    "build": "npm run docs",
+    "build": "webpack",
     "prepare": "npm run build",
-    "test": "node test/index.js --no-warnings"
+    "refs": "yaml2json test/references.yml -s -p",
+    "server": "cd test && static-server -p 3100 -c \"*\"",
+    "test": "npm run refs && npm run server"
   },
-  "dependencies": {
-    "handlebars": "^4.1.1",
-    "he": "^1.2.0",
-    "markdown-it": "^8.4.2"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "copy-webpack-plugin": "^5.0.2",
     "eslint": "^5.16.0",
-    "jasmine": "^3.4.0"
+    "handlebars": "^4.1.1",
+    "static-server": "^2.2.1",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "yamljs": "^0.3.0"
   }
 }
