@@ -1,6 +1,6 @@
 # LingRef
 
-`LingRef` is a Handlebars template and JavaScript library for rendering [Mendeley][Mendeley] references following the [unified stylesheet for linguistics][unified].
+LingRef is a Handlebars template and JavaScript library for rendering [Mendeley][Mendeley] references following the [unified stylesheet for linguistics][unified].
 
 Created and maintained by [Daniel W. Hieber][DWH] (University of California, Santa Barbara)
 
@@ -27,37 +27,21 @@ Available under an [MIT license][9].
 
 1. Get your Mendeley references in JSON format. See [Getting Mendeley Data](#getting=mendeley-data) below.
 
-1. Install [Handlebars][Handlebars] by downloading it and copying it to your project, or installing it using npm (or yarn).
+1. Install [Handlebars][Handlebars]: `npm i handlebars`.
 
-1. Install `LingRef` with npm (`npm i ling-ref`) or yarn (`yarn add ling-ref`), or by downloading it from the [releases page][releases] and copying `LingRef.js` and `reference.hbs` to your project folder.
+1. Install LingRef: `npm i ling-ref`.
 
-1. Import the LingRef library using `import`, `require`, or global variables, depending on your environment.
-
-```js
-import LingRef from 'LingRef';
-```
-
-1. Create a new `LingRef` instance, and pass it any options you'd like to set. See the [Options](#options) section below for a complete list of available options.
+1. Import the LingRef library and create a new `LingRef` instance, passing it any options you'd like to set. See the [Options](#options) section below for a complete list of available options.
 
 ```js
+const LingRef = require(`ling-ref`)
 const lingRef = new LingRef(/* optional options object here */);
 ```
-
-1. Initialize `LingRef` using `lingRef.init()`. This will retrieve the Handlebars template and register it as a partial. Returns a Promise.
 
 1. Compile a Mendeley reference to HTML using `lingRef.compile()`.
 
 ```js
 const html = lingRef.compile(reference);
-```
-
-1. Render the HTML:
-
-```js
-const list = document.getElementById(`reference-list`);
-const li   = document.createElement(`li`);
-li.innerHTML = html;
-list.appendChild(li);
 ```
 
 1. Since `LingRef` also registers the reference template as a partial with Handlebars, you can use it in your own templates:
@@ -84,7 +68,7 @@ headerLevel | `"h4"`             | Which level (`h1` - `h6`) of header to use fo
 initials    | `false`            | Whether to display only the first initials of the author
 notes       | `false`            | Whether to render the `"notes"` field of the reference
 partial     | `"reference"`      | The name to use for the partial when registering the jschemer template with Handlebars
-template    | `"reference.hbs"`  | The path to the jschemer Handlebars template
+template    | `"reference.hbs"`  | The path to the Handlebars reference template
 
 ## Getting Mendeley Data
 
@@ -118,9 +102,9 @@ Found a bug? Have a suggestion for improvement? Have a question? [Open an issue 
 
 # Running Tests
 
-Run `npm test` from the command line. This will run tests on the JavaScript portion of the library in Node, as well as regenerate the test page in the `/docs` folder.
+Run `npm test` from the command line. This will run tests on the JavaScript portion of the library in Node.
 
-You may also view the result manually by building the documentation (`npm run docs`) and then opening `/docs/index.html` in your browser.
+Open the file `test/index.html` to run the manual tests on the generated HTML.
 
 <!-- LINKS -->
 

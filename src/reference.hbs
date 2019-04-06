@@ -78,7 +78,7 @@
 <{{#if details}}details{{else}}section{{/if}} data-key="{{citation_key}}" class=ref>
 
   {{!-- citation --}}
-  <{{#if details}}summary{{else}}section{{/if}} class=citation>
+  <{{#if details}}summary{{else}}p{{/if}} class=citation>
     {{#lr-replace '(\.){2}' '.'}}{{!-- Removes any sequence of two periods in a row --}}
 
       {{#lr-is type "book"}}
@@ -169,7 +169,7 @@
       {{#if websites}}(<a href="{{websites.[0]}}">link</a>){{/if}}
     {{/lr-is}}
 
-  </{{#if details}}summary{{else}}section{{/if}}>
+  </{{#if details}}summary{{else}}p{{/if}}>
 
   {{!-- abstract --}}
   {{#if abstract}}

@@ -22,22 +22,23 @@
     "type": "git",
     "url": "git+https://github.com/dwhieb/ling-ref.git"
   },
-  "main": "LingRef.js",
-  "module": "src/index.js",
+  "engines": {
+    "node": "10.x"
+  },
+  "main": "src/index.js",
   "scripts": {
-    "build": "webpack",
+    "docs": "node build/docs.js",
+    "build": "npm run docs",
     "prepare": "npm run build",
-    "test": "cd test && static-server -p 3100 -c \"*\""
+    "test": "jasmine --config=test/jasmine.json"
   },
-  "dependencies": {},
-  "devDependencies": {
-    "copy-webpack-plugin": "^5.0.2",
-    "eslint": "^5.16.0",
+  "dependencies": {
     "handlebars": "^4.1.1",
-    "jasmine": "^3.4.0",
-    "static-server": "^2.2.1",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.0"
+    "he": "^1.2.0",
+    "markdown-it": "^8.4.2"
   },
-  "peerDependencies": {}
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "jasmine": "^3.4.0"
+  }
 }
