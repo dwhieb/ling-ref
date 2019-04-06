@@ -73,7 +73,7 @@ describe(`LingRef`, () => {
       const hbs = Handlebars.create();
 
       // eslint-disable-next-line no-shadow
-      const templatePath = path.join(__dirname, `jasmine.json`);
+      const templatePath = path.join(__dirname, `index.html`);
 
       new LingRef({
         handlebars: hbs,

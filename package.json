@@ -23,14 +23,14 @@
     "url": "git+https://github.com/dwhieb/ling-ref.git"
   },
   "engines": {
-    "node": "10.x"
+    "node": "11.x"
   },
   "main": "src/index.js",
   "scripts": {
     "docs": "node build/docs.js",
     "build": "npm run docs",
     "prepare": "npm run build",
-    "test": "jasmine --config=test/jasmine.json"
+    "test": "node test/index.js --no-warnings"
   },
   "dependencies": {
     "handlebars": "^4.1.1",
