@@ -1,6 +1,6 @@
 # ling-ref
 
-`ling-ref` is a Handlebars template for rendering bibliographic references stored in [Mendeley][Mendeley] following the [unified style sheet for linguistics][unified], and accompanying JavaScript library allowing users to use the template programmatically. This is useful for adding a linguistic bibliography to a website.
+`ling-ref` is a Handlebars template and JavaScript library for rendering [Mendeley][Mendeley] references following the [unified stylesheet for linguistics][unified].
 
 Created and maintained by [Daniel W. Hieber][DWH] (University of California, Santa Barbara)
 
@@ -8,165 +8,131 @@ Available under an [MIT license][9].
 
 <!-- BADGES -->
 
-[![npm](https://img.shields.io/npm/v/ling-ref.svg)][npm]
-[![npm](https://img.shields.io/npm/dt/ling-ref.svg)][npm]
+[![npm version](https://img.shields.io/npm/v/ling-ref.svg)][npm]
+[![npm downloads](https://img.shields.io/npm/dt/ling-ref.svg)][npm]
+[![Travis CI](https://img.shields.io/travis/dwhieb/ling-ref/master.svg)][Travis]
 [![GitHub issues](https://img.shields.io/github/issues/dwhieb/ling-ref.svg)][isues]
 [![GitHub license](https://img.shields.io/github/license/dwhieb/ling-ref.svg)][license]
 [![GitHub stars](https://img.shields.io/github/stars/dwhieb/ling-ref.svg?style=social)][GitHub]
 
 ## Contents
 
-* [Using in the Browser](#using-in-the-browser)
-* [Using in Node](#using-in-node)
+* [Usage](#usage)
+* [Options](#option)
 * [Getting Mendeley Data](#getting-mendeley-data)
-* [HTML & Styling](#html--styling)
+* [Customizing](#customizing)
 * [Reporting Issues](#reporting-issues)
 * [Running Tests](#running-tests)
 
-## Using in the Browser
+## Usage
 
-1. Get your Mendeley references in JSON format. See [Getting Mendeley Data](#getting-mendeley-data) below.
+1. Get your Mendeley references in JSON format. See [Getting Mendeley Data](#getting=mendeley-data) below.
 
-1. [Download Handlebars][7] and copy it to your project folder.
+1. Install [Handlebars][Handlebars] by downloading it and copying it to your project, or installing it using npm (or yarn).
 
-1. [Download the latest release of ling-ref][6] and copy the contents of the `/dist` folder to your project. Rename the folder to something identifiable such as `/lingref`.
+1. Install `ling-ref` with npm (`npm i ling-ref`) or yarn (`yarn add ling-ref`), or by downloading it from the [releases page][releases] and copying `ling-ref.js` and `reference.hbs` to your project folder.
 
-1. Add the Handlebars and ling-ref scripts to your page, before your project's other scripts. This will make the `Handlebars` and `lingRef` objects available as global variables.
+1. Import the Handlebars and LingRef libraries using `import`, `require`, or global variables, depending on your environment.
 
-  ```html
-  <script src=handlebars.js></script>
-  <script src=lingref/index.js></script>
-  <script src=your-script.js></script>
-  ```
+```js
+import Handlebars from 'handlebars';
+import LingRef from 'ling-ref';
+```
 
-1. Your project's JavaScript will need to do each of the following. Simple code examples are given for each step.
+1. Create a new `LingRef` instance, and pass it any options you'd like to set. See the [Options](#options) section below for a complete list of available options.
 
-  - Pass the Handlebars instance to lingRef to register the necessary helpers with Handlebars:
+```js
+const lingRef = new LingRef(/* optional options object here */);
+```
 
-    ```js
-    lingRef(Handlebars):
-    ```
+1. Compile a Mendeley reference to HTML using `lingRef.compile()`.
 
-  - Fetch the `reference.hbs` template:
+```js
+const html = lingRef.compile(reference);
+```
 
-    ```js
-    const res      = await fetch(`reference.hbs`);
-    const template = await res.text();
-    ```
+1. Render the HTML:
 
-  - Compile the template:
+```js
+const list = document.getElementById(`reference-list`);
+const li   = document.createElement(`li`);
+li.innerHTML = html;
+list.appendChild(li);
+```
 
-    ```js
-    const compile = Handlebars.compile(template);
-    ```
+1. `ling-ref` will also register the reference template as a partial with Handlebars, so you can use it in your own templates:
 
-  - Render the template once for each Mendeley reference:
+```hbs
+<ol class=reference-list>
+  {{#each references}}
+    {{> reference}}
+  {{/each}}
+</ol>
+```
 
-    ```js
-    const list = document.getElementById(`reference-list`);
+# Options
 
-    // You can also sort or preformat your references here
-    references.forEach(data => {
-      const html   = compile(data);
-      const li     = document.createElement(`li`);
-      li.innerHTML = html;
-      list.appendChild(li);
-    });
-    ```
+The following options may be passed to the Handlebars context when rendering the template, to affect how the reference is displayed.
 
-## Using with Node
-
-1. Get your Mendeley references in JSON format. See [Getting Mendeley Data](#getting-mendeley-data) below.
-
-1. Install Handlebars and ling-ref in your project:
-
-  ```
-  npm i handlebars ling-ref
-  ```
-
-1. Your Node script will then need to do the following:
-
-  - Import Handlebars and ling-ref:
-
-    ```js
-    const Handlebars = require('handlebars');
-    const lingRef    = require('ling-ref');
-    ```
-
-  - Pass the Handlebars instance to lingRef to register the necessary helpers:
-
-    ```js
-    lingRef(Handlebars):
-    ```
-
-  - Read the `reference.hbs` file from ling-ref's `/src` folder, and register it as a partial with Handlebars:
-
-    ```js
-    const reference = fs.readFileSync(`node_modules/ling-ref/src/reference.hbs`, `utf8`);
-
-    Handlebars.registerPartial({ reference });
-    ```
-
-1. Now you can use the reference partial in your server-side templates:
-
-  ```hbs
-  <ol class=reference-list>
-    {{#each references}}
-      {{> reference}}
-    {{/each}}
-  </ol>
-  ```
+Option      | Default            | Description
+----------- | ------------------ | -----------
+abstract    | `false`            | Whether to render the `"abstract"` field of the reference
+details     | `false`            | Whether to wrap the citation in a `<details>` element rather than a `<section>` element. If set to `true`, the citation itself will also be placed within a `<summary>` element rather than a `<p>` element.
+expanded    | `true`             | Whether the details element should start as open or closed
+handlebars  | `Handlebars`       | The Handlebars instance to register the partial with. If none is passed, jschemer looks for an object called either `Handlebars` or `handlebars` in the local scope.
+headerLevel | `"h4"`             | Which level (`h1` - `h6`) of header to use for the Notes and Abstracts headers.
+initials    | `false`            | Whether to display only the first initials of the author
+notes       | `false`            | Whether to render the `"notes"` field of the reference
+partial     | `"reference"`      | The name to use for the partial when registering the jschemer template with Handlebars
+template    | `"reference.hbs"`  | The path to the jschemer Handlebars template
 
 ## Getting Mendeley Data
 
-[Mendeley][4] is a software and service for managing bibliographic sources. Once you have added some sources to your database and synced them with Mendeley, you can retrieve your sources in JSON format from the [Mendeley API][10].
+[Mendeley][Mendeley] is a software and service for managing bibliographic sources. Once you have added some sources to your database and synced them with Mendeley, you can retrieve your sources in JSON format from the [Mendeley API][dev].
 
-The easiest way to get your references in JSON format is by using Mendeley's [API explorer][11]. Simply log in with your Mendeley credentials, and you can make requests to the Mendeley API. Most likely you will want to make a `GET /documents` request. You can then copy-paste the JSON data from the response.
+The easiest way to get your references in JSON format is by using Mendeley's [API explorer][explorer]. Simply log in with your Mendeley credentials, and you can make requests to the Mendeley API. Most likely you will want to make a `GET /documents` request. You can then copy-paste the JSON data from the response.
 
 **IMPORTANT:** Make sure that the `view` parameter is set to `all` when requesting documents, whether using the API explorer or accessing the API programmatically.
 
-You can also access the Mendeley API programmatically, and retrieve documents in realtime before rendering your bibliography. See the [Mendeley developer documentation][10] for more information. Again, make sure that the `view` parameter is set to `all` when requesting documents, or your data will be missing fields.
+You can also access the Mendeley API programmatically, and retrieve documents in realtime before rendering your bibliography. See the [Mendeley developer documentation][dev] for more information. Again, make sure that the `view` parameter is set to `all` when requesting documents, or your data will be missing fields.
 
 **NOTE:** ling-ref will automatically parse HTML or Markdown that you include in the title, notes, or abstract fields of the reference.
 
-# HTML & Styling
-
-ling-ref supports two different HTML templates for references, depending on your preference. The HTML has several classes applied that you can use to add CSS styling.
+# HTML & CSS
 
 By default, each reference is wrapped in a `<section data-key="{{citation_key}}" class=ref>` tag. Inside this tag are:
 
-  - `<section class=citation>` - The actual citation for the reference. References that have URLs will add a `(link)` text to the end of the citation, with a link to the first URL in the `websites` field.
+  - `<p class=citation>` - The actual citation for the reference. References that have URLs will add a `(link)` text to the end of the citation, with a link to the first URL in the `websites` field.
 
   - `<section class=abstract>` - The abstract for that reference, if present.
 
   - `<section class=notes>` - The notes for that reference, if present.
 
-If you include value `{ details: true }` in the context passed to the Handlebars template, the reference will be wrapped in a `<details data-key="{{citation_key}}" class=ref>` tag instead of a `<section>` tag, and the citation will be a `<summary class=citation>` element rather than a `<section>` element. This allows users to expand / collapse individual references for more information. It also allows you to decide at the level of the individual reference whether you prefer the reference to be collapsible or not.
+If the `details` option is set to `true`, the reference will be wrapped in a `<details data-key="{{citation_key}}" class=ref>` tag instead of a `<section>` tag, and the citation will be a `<summary class=citation>` element rather than a `<section>` element. This allows users to expand / collapse individual references for more information. It also allows you to decide at the level of the individual reference whether you prefer the reference to be collapsible or not.
 
 Markdown text (including HTML) is supported in the title, abstract, and notes fields section. Both sections also contain an `<h4>` header with the text `Abstract` and `Notes` respectively.
 
 # Reporting Issues
 
-Found a bug? Have a suggestion for improvement? Have a question? [Open an issue on GitHub.][12]
+Found a bug? Have a suggestion for improvement? Have a question? [Open an issue on GitHub.][issues]
 
 # Running Tests
 
-Run `npm test` from the command line. This will run tests on the JavaScript portion of the library in Node, and then start a local server. Then navigate to `http://localhost:3000/` in your browser to view a sample reference list generated using the ling-ref library. Enter `Ctrl + C` on the command line to stop the server.
+Run `npm test` from the command line. This will run tests on the JavaScript portion of the library in Node, as well as regenerate the test page in the `/docs` folder.
+
+You may also view the result manually by building the documentation (`npm run docs`) and then opening `/docs/index.html` in your browser.
 
 <!-- LINKS -->
 
-[DWH]:      https://danielhieber.com
-[GitHub]:   https://github.com/dwhieb/ling-ref
-[issues]:   https://github.com/dwhieb/ling-ref/issues
-[license]:  https://github.com/dwhieb/ling-ref/blob/master/LICENSE.md
-[Mendeley]: https://www.mendeley.com
-[npm]:      https://www.npmjs.com/package/ling-ref
-[unified]:  https://www.linguisticsociety.org/resource/unified-style-sheet
-
-[5]: https://danielhieber.com/bibliographies/flexibility
-[6]: https://github.com/dwhieb/ling-ref/releases
-[7]: http://handlebarsjs.com/installation.html
-[8]: http://handlebarsjs.com/
-[9]: https://opensource.org/licenses/MIT
-[10]: http://dev.mendeley.com
-[11]: https://api.mendeley.com/apidocs/docs
+[API]:        http://dev.mendeley.com
+[DWH]:        https://danielhieber.com
+[GitHub]:     https://github.com/dwhieb/ling-ref
+[explorer]:   https://api.mendeley.com/apidocs/docs
+[Handlebars]: http://handlebarsjs.com/
+[issues]:     https://github.com/dwhieb/ling-ref/issues
+[license]:    https://github.com/dwhieb/ling-ref/blob/master/LICENSE.md
+[Mendeley]:   https://www.mendeley.com
+[npm]:        https://www.npmjs.com/package/ling-ref
+[releases]:   https://github.com/dwhieb/ling-ref/releases
+[Travis]:     https://travis-ci.org/dwhieb/ling-ref
+[unified]:    https://www.linguisticsociety.org/resource/unified-style-sheet
