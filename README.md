@@ -2,6 +2,8 @@
 
 LingRef is a Handlebars template and accompanying helpers for rendering [Mendeley][Mendeley] references following the [unified stylesheet for linguistics][unified] (mostly).
 
+[View an example bibliography here.][demo]
+
 Created and maintained by [Daniel W. Hieber][DWH] (University of California, Santa Barbara)
 
 Available under an [MIT license][9].
@@ -118,6 +120,7 @@ Open the file `test/index.html` to run the tests. Additional references can be t
 <!-- LINKS -->
 
 [API]:        http://dev.mendeley.com
+[demo]:       ./test/index.html
 [DWH]:        https://danielhieber.com
 [GitHub]:     https://github.com/dwhieb/ling-ref
 [explorer]:   https://api.mendeley.com/apidocs/docs
