@@ -1,0 +1,3 @@
+rules:
+  max-nested-callbacks: off
+  no-invalid-this: off

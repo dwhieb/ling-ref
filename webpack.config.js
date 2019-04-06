@@ -1,30 +1,34 @@
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const path              = require('path');
+const CopyPlugin = require(`copy-webpack-plugin`);
+const path       = require(`path`);
 
 module.exports = {
-  entry:     `./src/index.js`,
-  externals: `handlebars`,
-  mode:      `production`,
+  entry:  path.join(__dirname, `src/helpers`),
+  mode:   `production`,
   output: {
-    filename:      `index.js`,
-    library:       `lingRef`,
+    filename:      `helpers.js`,
+    globalObject:  `this`,
+    library:       `LingRef`,
     libraryTarget: `umd`,
-    path:          path.resolve(__dirname, `dist`),
+    path:          path.join(__dirname, `dist`),
   },
   plugins: [
-    new CopyWebpackPlugin([
+    new CopyPlugin([
       {
-        from: path.resolve(__dirname, `src/reference.hbs`),
-        to:   path.resolve(__dirname, `dist/reference.hbs`),
+        from: path.join(__dirname, `node_modules/handlebars/dist/handlebars.min.js`),
+        to:   path.join(__dirname, `test/handlebars.js`),
       },
       {
-        from: path.resolve(__dirname, `src/reference.hbs`),
-        to:   path.resolve(__dirname, `test/reference.hbs`),
+        from: path.join(__dirname, `dist/helpers.js`),
+        to:   path.join(__dirname, `test/helpers.js`),
       },
       {
-        from: path.resolve(__dirname, `dist/index.js`),
-        to:   path.resolve(__dirname, `test/ling-ref.js`),
+        from: path.join(__dirname, `src/reference.hbs`),
+        to:   path.join(__dirname, `dist/reference.hbs`),
       },
-    ])
+      {
+        from: path.join(__dirname, `src/reference.hbs`),
+        to:   path.join(__dirname, `test/reference.hbs`),
+      },
+    ]),
   ],
 };

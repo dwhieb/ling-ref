@@ -1,8 +1,8 @@
 {
   "exec": "npm test",
-  "ext": "hbs,js,json",
+  "ext": "hbs,js,yml",
   "ignore": [
-    "dist/*",
-    "test/*"
+    "handlebars.js",
+    "reference.hbs"
   ]
 }

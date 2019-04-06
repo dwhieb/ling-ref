@@ -1,0 +1,11 @@
+- type:  book
+  title: The languages of Native North America
+  year:  1999
+  authors:
+    - last_name:  Mithun
+      first_name: Marianne
+  publisher:    Cambridge University Press
+  city:         Cambridge
+  series:       Cambridge Language Surveys
+  citation_key: Mithun1999
+  entry: 'Mithun, Marianne. 1999. The languages of Native North America (Cambridge Language Surveys). Cambridge University Press.'
