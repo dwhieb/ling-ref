@@ -26,8 +26,7 @@
   "module": "src/index.js",
   "scripts": {
     "build": "webpack",
-    "prepare": "npm run build",
-    "test": "jasmine --config=test/jasmine.json"
+    "prepare": "npm run build"
   },
   "dependencies": {},
   "devDependencies": {

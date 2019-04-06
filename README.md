@@ -10,7 +10,6 @@ Available under an [MIT license][9].
 
 [![npm version](https://img.shields.io/npm/v/ling-ref.svg)][npm]
 [![npm downloads](https://img.shields.io/npm/dt/ling-ref.svg)][npm]
-[![Travis CI](https://img.shields.io/travis/dwhieb/ling-ref/master.svg)][Travis]
 [![GitHub issues](https://img.shields.io/github/issues/dwhieb/ling-ref.svg)][issues]
 [![GitHub license](https://img.shields.io/github/license/dwhieb/ling-ref.svg)][license]
 [![GitHub stars](https://img.shields.io/github/stars/dwhieb/ling-ref.svg?style=social)][GitHub]
@@ -135,5 +134,4 @@ You may also view the result manually by building the documentation (`npm run do
 [Mendeley]:   https://www.mendeley.com
 [npm]:        https://www.npmjs.com/package/ling-ref
 [releases]:   https://github.com/dwhieb/ling-ref/releases
-[Travis]:     https://travis-ci.org/dwhieb/ling-ref
 [unified]:    https://www.linguisticsociety.org/resource/unified-style-sheet
