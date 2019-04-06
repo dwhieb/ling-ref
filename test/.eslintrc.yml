@@ -1,2 +1,3 @@
 rules:
   max-nested-callbacks: off
+  no-new: off
