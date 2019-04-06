@@ -1,6 +1,6 @@
-# ling-ref
+# LingRef
 
-`ling-ref` is a Handlebars template and JavaScript library for rendering [Mendeley][Mendeley] references following the [unified stylesheet for linguistics][unified].
+`LingRef` is a Handlebars template and JavaScript library for rendering [Mendeley][Mendeley] references following the [unified stylesheet for linguistics][unified].
 
 Created and maintained by [Daniel W. Hieber][DWH] (University of California, Santa Barbara)
 
@@ -11,7 +11,7 @@ Available under an [MIT license][9].
 [![npm version](https://img.shields.io/npm/v/ling-ref.svg)][npm]
 [![npm downloads](https://img.shields.io/npm/dt/ling-ref.svg)][npm]
 [![Travis CI](https://img.shields.io/travis/dwhieb/ling-ref/master.svg)][Travis]
-[![GitHub issues](https://img.shields.io/github/issues/dwhieb/ling-ref.svg)][isues]
+[![GitHub issues](https://img.shields.io/github/issues/dwhieb/ling-ref.svg)][issues]
 [![GitHub license](https://img.shields.io/github/license/dwhieb/ling-ref.svg)][license]
 [![GitHub stars](https://img.shields.io/github/stars/dwhieb/ling-ref.svg?style=social)][GitHub]
 
@@ -30,13 +30,12 @@ Available under an [MIT license][9].
 
 1. Install [Handlebars][Handlebars] by downloading it and copying it to your project, or installing it using npm (or yarn).
 
-1. Install `ling-ref` with npm (`npm i ling-ref`) or yarn (`yarn add ling-ref`), or by downloading it from the [releases page][releases] and copying `ling-ref.js` and `reference.hbs` to your project folder.
+1. Install `LingRef` with npm (`npm i ling-ref`) or yarn (`yarn add ling-ref`), or by downloading it from the [releases page][releases] and copying `LingRef.js` and `reference.hbs` to your project folder.
 
-1. Import the Handlebars and LingRef libraries using `import`, `require`, or global variables, depending on your environment.
+1. Import the LingRef library using `import`, `require`, or global variables, depending on your environment.
 
 ```js
-import Handlebars from 'handlebars';
-import LingRef from 'ling-ref';
+import LingRef from 'LingRef';
 ```
 
 1. Create a new `LingRef` instance, and pass it any options you'd like to set. See the [Options](#options) section below for a complete list of available options.
@@ -44,6 +43,8 @@ import LingRef from 'ling-ref';
 ```js
 const lingRef = new LingRef(/* optional options object here */);
 ```
+
+1. Initialize `LingRef` using `lingRef.init()`. This will retrieve the Handlebars template and register it as a partial. Returns a Promise.
 
 1. Compile a Mendeley reference to HTML using `lingRef.compile()`.
 
@@ -60,7 +61,7 @@ li.innerHTML = html;
 list.appendChild(li);
 ```
 
-1. `ling-ref` will also register the reference template as a partial with Handlebars, so you can use it in your own templates:
+1. Since `LingRef` also registers the reference template as a partial with Handlebars, you can use it in your own templates:
 
 ```hbs
 <ol class=reference-list>
@@ -79,7 +80,7 @@ Option      | Default            | Description
 abstract    | `false`            | Whether to render the `"abstract"` field of the reference
 details     | `false`            | Whether to wrap the citation in a `<details>` element rather than a `<section>` element. If set to `true`, the citation itself will also be placed within a `<summary>` element rather than a `<p>` element.
 expanded    | `true`             | Whether the details element should start as open or closed
-handlebars  | `Handlebars`       | The Handlebars instance to register the partial with. If none is passed, jschemer looks for an object called either `Handlebars` or `handlebars` in the local scope.
+handlebars  | `Handlebars`       | The Handlebars instance to register the partial with. If none is passed, jschemer attempts to import the Handlebars library.
 headerLevel | `"h4"`             | Which level (`h1` - `h6`) of header to use for the Notes and Abstracts headers.
 initials    | `false`            | Whether to display only the first initials of the author
 notes       | `false`            | Whether to render the `"notes"` field of the reference
@@ -96,7 +97,7 @@ The easiest way to get your references in JSON format is by using Mendeley's [AP
 
 You can also access the Mendeley API programmatically, and retrieve documents in realtime before rendering your bibliography. See the [Mendeley developer documentation][dev] for more information. Again, make sure that the `view` parameter is set to `all` when requesting documents, or your data will be missing fields.
 
-**NOTE:** ling-ref will automatically parse HTML or Markdown that you include in the title, notes, or abstract fields of the reference.
+**NOTE:** `LingRef` will automatically parse HTML or Markdown that you include in the title, notes, or abstract fields of the reference.
 
 # HTML & CSS
 

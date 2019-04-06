@@ -22,24 +22,20 @@
     "type": "git",
     "url": "git+https://github.com/dwhieb/ling-ref.git"
   },
-  "main": "src/index.js",
+  "main": "LingRef.js",
+  "module": "src/index.js",
   "scripts": {
     "build": "webpack",
-    "test": "npm run build && node test/server.js ./test"
+    "prepare": "npm run build",
+    "test": "jasmine --config=test/jasmine.json"
   },
-  "dependencies": {
-    "he": "^1.2.0",
-    "markdown-it": "^8.4.2"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "copy-webpack-plugin": "^4.6.0",
-    "express": "^4.16.4",
-    "express-handlebars": "^3.0.0",
-    "handlebars": "^4.0.12",
-    "webpack": "^4.29.0",
-    "webpack-cli": "^3.2.1"
+    "eslint": "^5.16.0",
+    "handlebars": "^4.1.1",
+    "jasmine": "^3.4.0",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
   },
-  "peerDependencies": {
-    "handlebars": "^4.0.12"
-  }
+  "peerDependencies": {}
 }

@@ -1,7 +1,9 @@
-# ESLint v5.9.0
+# ESLint v5.15.2
 parserOptions:
-  ecmaVersion: 2019
-  sourceType:  module
+  ecmaVersion: 10
+  ecmaFeatures:
+    impliedStrict: true
+  sourceType: module
 env:
   browser: true
   es6:     true
@@ -27,7 +29,7 @@ rules:
     objectsInArrays: false
     arraysInArrays: false
   array-callback-return: warn
-  array-element-newline: off
+  array-element-newline: 'off'
   arrow-body-style:
   - warn
   - as-needed
@@ -49,9 +51,8 @@ rules:
   callback-return: warn
   camelcase:
   - warn
-  - ignoreDestructuring: false
-    properties: always
-  capitalized-comments: off
+  - properties: always
+  capitalized-comments: 'off'
   class-methods-use-this: warn
   comma-dangle:
   - error
@@ -63,12 +64,12 @@ rules:
   comma-style:
   - error
   - last
-  complexity: off
+  complexity: 'off'
   computed-property-spacing:
   - error
   - never
-  consistent-return: off
-  consistent-this: off
+  consistent-return: 'off'
+  consistent-this: 'off'
   constructor-super: error
   curly:
   - error
@@ -110,8 +111,8 @@ rules:
   global-require: warn
   guard-for-in: warn
   handle-callback-err: error
-  id-length: off
-  id-match: off
+  id-length: 'off'
+  id-match: 'off'
   implicit-arrow-linebreak:
   - error
   - beside
@@ -119,22 +120,22 @@ rules:
   - error
   - 2
   - SwitchCase: 1
-    MemberExpression: off
+    MemberExpression: 'off'
   init-declarations:
-  - off
+  - 'off'
   key-spacing:
   - error
   - beforeColon: false
-    afterColon: true
-    mode: minimum
-    align: value
+    afterColon:  true
+    mode:        minimum
+    align:       value
   keyword-spacing:
   - error
   - before: true
     after: true
-  line-comment-position: off
+  line-comment-position: 'off'
   linebreak-style:
-  - off
+  - 'off'
   lines-around-comment:
   - warn
   - beforeBlockComment: true
@@ -162,7 +163,7 @@ rules:
     ignoreStrings: true
     ignoreTemplateLiterals: true
     ignoreUrls: true
-  max-lines: off
+  max-lines: 'off'
   max-lines-per-function: off
   max-nested-callbacks:
   - warn
@@ -176,14 +177,14 @@ rules:
   max-statements-per-line:
   - warn
   - max: 2
-  multiline-comment-style: off
-  multiline-ternary: off
+  multiline-comment-style: 'off'
+  multiline-ternary: 'off'
   new-cap:
   - warn
   - newIsCap: true
     capIsNew: true
     properties: true
-  new-parens: off
+  new-parens: 'off'
   newline-per-chained-call:
   - warn
   - ignoreChainWithDepth: 3
@@ -257,7 +258,7 @@ rules:
   no-implicit-coercion: warn
   no-implicit-globals: error
   no-implied-eval: error
-  no-inline-comments: off
+  no-inline-comments: 'off'
   no-inner-declarations:
   - error
   - functions
@@ -271,7 +272,7 @@ rules:
     skipTemplates: false
   no-iterator: error
   no-label-var: error
-  no-labels: off
+  no-labels: 'off'
   no-lone-blocks: error
   no-lonely-if: warn
   no-loop-func: error
@@ -346,11 +347,11 @@ rules:
   - error
   - props: true
   no-path-concat: error
-  no-plusplus: off
-  no-process-env: off
+  no-plusplus: 'off'
+  no-process-env: 'off'
   no-process-exit: error
   no-proto: error
-  no-prototype-builtins: off
+  no-prototype-builtins: 'off'
   no-redeclare: error
   no-regex-spaces: error
   no-return-assign:
@@ -375,7 +376,7 @@ rules:
   no-sync: error
   no-tabs: warn
   no-template-curly-in-string: error
-  no-ternary: off
+  no-ternary: 'off'
   no-this-before-super: error
   no-throw-literal: error
   no-trailing-spaces:
@@ -407,6 +408,7 @@ rules:
     - classes: false
       functions: false
   no-useless-call: error
+  no-useless-catch: error
   no-useless-concat: error
   no-useless-computed-key: error
   no-useless-constructor: error
@@ -442,7 +444,7 @@ rules:
   one-var:
   - error
   - never
-  one-var-declaration-per-line: off
+  one-var-declaration-per-line: 'off'
   operator-assignment:
   - error
   - always
@@ -452,8 +454,8 @@ rules:
   - overrides:
       "?": ignore
       ":": ignore
-  padded-blocks: off
-  padding-line-between-statements: off
+  padded-blocks: 'off'
+  padding-line-between-statements: 'off'
   prefer-arrow-callback:
   - error
   - allowNamedFunctions: true
@@ -467,6 +469,7 @@ rules:
   - array: false
     object: true
   - enforceForRenamedProperties: false
+  prefer-named-capture-group: warn
   prefer-numeric-literals: warn
   prefer-object-spread: off
   prefer-promise-reject-errors:
@@ -490,12 +493,6 @@ rules:
   - always
   require-atomic-updates: error
   require-await: error
-  require-jsdoc:
-  - error
-  - require:
-      FunctionDeclaration: true
-      MethodDefinition: false
-      ClassDeclaration: false
   require-unicode-regexp: error
   require-yield: error
   rest-spread-spacing:
@@ -567,39 +564,11 @@ rules:
   wrap-iife:
   - off
   - outside
-  wrap-regex: off
+  wrap-regex: 'off'
   yield-star-spacing:
   - error
   - after
   yoda:
   - error
   - never
-  valid-jsdoc:
-  - warn
-  - prefer:
-      arg: param
-      argument: param
-      augments: extends
-      constant: const
-      constructor: class
-      defaultvalue: default
-      exception: throws
-      file: overview
-      fileoverview: overview
-      fires: emits
-      func: function
-      host: external
-      property: prop
-      returns: return
-      virtual: abstract
-    preferType:
-      boolean: Boolean
-      number: Number
-      object: Object
-      string: String
-      function: Function
-      promise: Promise
-    requireParamDescription: true
-    requireReturnDescription: false
-    requireReturn: false
-    requireReturnType: true
+  - onlyEquality: true

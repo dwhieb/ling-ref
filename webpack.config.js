@@ -1,30 +1,20 @@
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const path              = require('path');
+const path = require(`path`);
 
 module.exports = {
-  entry:     `./src/index.js`,
-  externals: `handlebars`,
-  mode:      `production`,
-  output: {
-    filename:      `index.js`,
-    library:       `lingRef`,
-    libraryTarget: `umd`,
-    path:          path.resolve(__dirname, `dist`),
+  entry:     path.join(__dirname, `src/index.js`),
+  externals: {
+    handlebars: {
+      amd:       'handlebars',
+      commonjs:  'handlebars',
+      commonjs2: 'handlebars',
+      root:      'handlebars',
+    },
   },
-  plugins: [
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, `src/reference.hbs`),
-        to:   path.resolve(__dirname, `dist/reference.hbs`),
-      },
-      {
-        from: path.resolve(__dirname, `src/reference.hbs`),
-        to:   path.resolve(__dirname, `test/reference.hbs`),
-      },
-      {
-        from: path.resolve(__dirname, `dist/index.js`),
-        to:   path.resolve(__dirname, `test/ling-ref.js`),
-      },
-    ])
-  ],
+  mode:   `production`,
+  output: {
+    filename:      `LingRef.js`,
+    library:       `LingRef`,
+    libraryTarget: `umd`,
+    path:          __dirname,
+  },
 };

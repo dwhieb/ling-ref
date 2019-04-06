@@ -1,13 +1,13 @@
-/**
- * Registers the helpers with Handlebars
- */
+import Handlebars from 'handlebars';
 
-const createHelpers = require('./helpers');
+const defaults = {};
 
-const register = hbs => {
-  const helpers = createHelpers(hbs);
-  hbs.registerHelper(helpers);
-  return hbs;
-};
+class LingRef {
 
-module.exports = register;
+  constructor(options = defaults) {}
+
+  async init() {}
+
+}
+
+export default LingRef;
