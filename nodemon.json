@@ -1,7 +1,8 @@
 {
-  "exec": "npm test",
+  "exec": "npm run build && npm test",
   "ext": "hbs,js,json",
   "ignore": [
+    "LingRef.js",
     "test/*"
   ]
 }
