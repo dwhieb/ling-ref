@@ -14,17 +14,6 @@ const template = `
 `;
 
 /**
- * Checks whether the inner text of a rendered reference is displayed correctly
- * @param  {Object}  ref A Mendeley reference object
- * @return {Boolean}
- */
-function isFormatted({ citation_key: key, entry }) {
-  const ref  = document.querySelector(`[data-key=${key}]`);
-  const text = ref.innerText;
-  return text === entry;
-}
-
-/**
  * Retrieves the list of test references from references.json
  * @return {Promise}
  */
@@ -60,7 +49,18 @@ describe(`LingRef`, () => {
   });
 
   it(`formats references correctly`, function checkReferences() {
-    this.references.forEach(ref => expect(isFormatted(ref)).toBe(true));
+    this.references.forEach(({ entry, citation_key: key, tags = [] }) => {
+
+      // Citation key is included on reference
+      const el = document.querySelector(`[data-key=${key}]`);
+
+      // Citation is formatted correctly
+      expect(el.innerText).toBe(entry);
+
+      // Tags are included on the reference
+      expect(el.dataset.tags).toBe(tags.join(`,`));
+
+    });
   });
 
 });
