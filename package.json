@@ -1,14 +1,11 @@
 {
   "name": "ling-ref",
   "version": "0.9.0",
-  "description": "A Handlebars template for rendering a bibliography following the unified style sheet for linguistics",
+  "description": "A JavaScript library that converts a Mendeley document to an HTML citation following the Unified Stylesheet for Linguistics",
   "keywords": [
-    "Handlebars",
-    "handlebars.js",
     "linguistics",
     "bibliography",
-    "research",
-    "stylesheet"
+    "research"
   ],
   "homepage": "https://github.com/dwhieb/ling-ref#readme",
   "bugs": "https://github.com/dwhieb/ling-ref/issues",
@@ -23,16 +20,12 @@
     "url": "git+https://github.com/dwhieb/ling-ref.git"
   },
   "engines": {
-    "node": "11.x"
+    "node": "14.x"
   },
-  "main": "src/helpers.js",
-  "scripts": {
-    "build": "webpack",
-    "prepare": "npm run build",
-    "refs": "yaml2json test/references.yml -s -p",
-    "server": "cd test && static-server -p 3100 -c \"*\"",
-    "test": "npm run refs && npm run server"
-  },
+  "type": "module",
+  "main": "ling-ref.js",
+  "exports": "ling-ref.js",
+  "scripts": {},
   "dependencies": {},
   "devDependencies": {}
 }
