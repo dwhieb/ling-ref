@@ -1,38 +1,15 @@
 const compilers = {
-  book:    compileBook,
-  journal: compileArticle,
+  book:         compileBook,
+  book_section: compileChapter,
+  journal:      compileArticle,
 };
 
 // compilers for specific fields
 
 function compileAuthors(authors, { initial = true } = {}) {
-
   if (!authors?.length) return `unknown`;
-
-  const firstAuthor = authors.pop();
-
-  let firstAuthorText;
-
-  if (initial) firstAuthorText = `${firstAuthor.last_name}, ${firstAuthor.first_name}`;
-  else firstAuthorText = `${firstAuthor.first_name} ${firstAuthor.last_name}`;
-
-  if (!authors.length) return firstAuthorText;
-
-  const lastAuthor = authors.pop();
-  const lastAuthorText = ` & ${lastAuthor.first_name} ${lastAuthor.last_name}`;
-
-  if (!authors.length) return `${firstAuthorText}${lastAuthorText}`;
-
-  let text = firstAuthorText;
-
-  authors.forEach(({ first_name, last_name }) => {
-    text += `, ${first_name} ${last_name}`;
-  });
-
-  text += lastAuthorText;
-
+  const text = compileNames(authors, { initial });
   return text;
-
 }
 
 function compileDOI(doi) {
@@ -61,7 +38,7 @@ function compileEditors(editors, { initial = true } = {}) {
 
   if (!editors?.length) return ``;
 
-  const names      = compileAuthors(editors, { initial });
+  const names      = compileNames(editors, { initial });
   const identifier = editors.length === 1 ? `ed.` : `eds.`;
 
   return `${names} (${identifier})`;
@@ -73,7 +50,44 @@ function compileIssue(issue) {
   return ``;
 }
 
+function compileNames(names, { initial = true } = {}) {
+
+  if (!names?.length) return ``;
+
+  const firstPerson = names.shift();
+
+  let firstPersonText;
+
+  if (initial) firstPersonText = `${firstPerson.last_name}, ${firstPerson.first_name}`;
+  else firstPersonText = `${firstPerson.first_name} ${firstPerson.last_name}`;
+
+  if (!names.length) return firstPersonText;
+
+  const lastPerson     = names.pop();
+  const lastPersonText = `, & ${lastPerson.first_name} ${lastPerson.last_name}`;
+
+  if (!names.length) return `${firstPersonText}${lastPersonText}`;
+
+  let text = firstPersonText;
+
+  names.forEach(({ first_name, last_name }) => {
+    text += `, ${first_name} ${last_name}`;
+  });
+
+  text += lastPersonText;
+
+  return text;
+
+}
+
+function compilePageInfo(pages) {
+  if (!pages) return ``;
+  const pageRange = compilePages(pages);
+  return `, pp. ${pageRange}`;
+}
+
 function compilePages(pages) {
+  if (!pages) return ``;
   return pages.replace(/-+/u, `–`);
 }
 
@@ -86,7 +100,21 @@ function compilePublisherInfo(doc) {
   if (doc.publisher) info += doc.publisher;
   else if (doc.institution) info += doc.institution;
 
-  return info;
+  return `${info}.`;
+
+}
+
+function compileSecondaryEditors(doc) {
+
+  const hasSecondaryEditors = doc.authors?.length && doc.editors?.length;
+
+  if (hasSecondaryEditors) {
+    const names = compileNames(doc.editors, { initial: false });
+    return `Edited by ${names}.`;
+  }
+
+  return ``;
+
 
 }
 
@@ -103,8 +131,13 @@ function compileSeriesInfo(doc) {
 
 }
 
+function compileTranslators(translators) {
+  if (!translators?.length) return ``;
+  return `Translated by ${compileNames(translators, { initial: false })}.`;
+}
+
 function compileYear(year) {
-  return year ?? `n.d.`;
+  return `${year}.` ?? `n.d.`;
 }
 
 // compilers by document type
@@ -117,21 +150,40 @@ function compileArticle(doc) {
   const pages   = compilePages(doc.pages);
   const doi     = compileDOI(doc.identifiers?.doi);
 
-  return `${authors}. ${year}. ${doc.title}. <cite>${doc.source}</cite> ${doc.volume}${issue}: ${pages}. ${doi}`;
+  return `${authors}. ${year} ${doc.title}. <cite>${doc.source}</cite> ${doc.volume}${issue}: ${pages}. ${doi}`;
 
 }
 
 function compileBook(doc) {
 
+  const authors          = compileAuthors(doc.authors);
+  const editors          = compileEditors(doc.editors);
+  const year             = compileYear(doc.year);
+  const edition          = compileEdition(doc.edition);
+  const seriesInfo       = compileSeriesInfo(doc);
+  const secondaryEditors = compileSecondaryEditors(doc);
+  const translators      = compileTranslators(doc.translators);
+  const publisherInfo    = compilePublisherInfo(doc);
+  const doi              = compileDOI(doc.identifiers?.doi);
+
+  return `${authors ?? editors}. ${year} <cite>${doc.title}</cite>${edition} ${seriesInfo}. ${secondaryEditors} ${translators} ${publisherInfo} ${doi}`;
+
+}
+
+function compileChapter(doc) {
+
   const authors       = compileAuthors(doc.authors);
-  const editors       = compileEditors(doc.editors);
   const year          = compileYear(doc.year);
+  const editorNames   = compileEditors(doc.editors, { initial: false });
+  const editors       = editorNames ? `${editorNames},` : ``;
   const edition       = compileEdition(doc.edition);
   const seriesInfo    = compileSeriesInfo(doc);
+  const translators   = compileTranslators(doc.translators);
   const publisherInfo = compilePublisherInfo(doc);
   const doi           = compileDOI(doc.identifiers?.doi);
+  const pageInfo      = compilePageInfo(doc.pages);
 
-  return `${authors ?? editors}. ${year}. <cite>${doc.title}</cite>${edition} ${seriesInfo}. ${publisherInfo}. ${doi}`;
+  return `${authors}. ${year} ${doc.title}. In ${editors} <cite>${doc.source}</cite>${edition} ${seriesInfo}${pageInfo}. ${translators} ${publisherInfo} ${doi}`;
 
 }
 
