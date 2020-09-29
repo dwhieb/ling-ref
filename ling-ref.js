@@ -35,9 +35,10 @@ function compileDateAccessed(timestamp) {
   const d = new Date(timestamp);
 
   const dateString = d.toLocaleDateString(`en-US`, {
-    day:   `numeric`,
-    month: `long`,
-    year:  `numeric`,
+    day:      `numeric`,
+    month:    `long`,
+    timeZone: `UTC`,
+    year:     `numeric`,
   });
 
   return `Accessed: ${dateString}.`;
