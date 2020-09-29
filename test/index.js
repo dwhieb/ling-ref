@@ -18,14 +18,16 @@ void async function test() {
   let   bibliography   = await readFile(bibliographyPath, `utf8`);
   const references     = yaml.parse(yamlReferences);
 
-  bibliography = bibliography.trim();
+  bibliography = bibliography
+  .replace(/\r\n/gu, `\n`)
+  .trim();
 
   const citations = references
   .map(convertReference)
   .map(citation => `<li><p>${citation}</p></li>`);
 
-  const referenceList = citations.join(`\r\n`);
-  const testString    = `<ul>\r\n${referenceList}\r\n</ul>`;
+  const referenceList = citations.join(`\n`);
+  const testString    = `<ul>\n${referenceList}\n</ul>`;
   const noChange      = testString === bibliography;
 
   if (noChange) {
