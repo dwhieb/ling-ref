@@ -388,7 +388,7 @@ rules:
   - error
   - typeof: true
   no-undef-init: error
-  no-undefined: warn
+  no-undefined: off
   no-underscore-dangle:
   - warn
   - allow:
