@@ -10,7 +10,7 @@ const currentDir = path.dirname(fileURLToPath(import.meta.url));
 
 const bibliographyPath = path.join(currentDir, `bibliography.html`);
 const referencesPath   = path.join(currentDir, `references.yml`);
-const contextChars     = 50;
+const contextChars     = 100;
 
 void async function test() {
 
@@ -29,6 +29,8 @@ void async function test() {
   const referenceList = citations.join(`\n`);
   const testString    = `<ul>\n${referenceList}\n</ul>`;
   const noChange      = testString === bibliography;
+
+  console.log(testString);
 
   if (noChange) {
     console.info(`Test passed!`);

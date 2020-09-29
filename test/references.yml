@@ -5,11 +5,35 @@
   authors:
     - first_name: Daniel W.
       last_name:  Hieber
-  pages:  313-363
+  pages:  '313-363'
   volume: '85'
   issue:  '3'
   identifiers:
     doi: 10.1086/703239
+
+- title:  'Category genesis in Chitimacha: A constructional approach'
+  type:   book_section
+  source: Category change from a constructional perspective
+  year:   2018
+  authors:
+    - first_name: Daniel W.
+      last_name:  Hieber
+  identifiers:
+    doi: 10.1075/cal.20.02hie
+  pages:     '15-46'
+  volume:    '20'
+  publisher: John Benjamins
+  city:      Amsterdam
+  series:    Constructional Approaches to Language
+  editors:
+    - first_name: Kristel
+      last_name:  Van Goethem
+    - first_name: Muriel
+      last_name:  Norde
+    - first_name: Evie
+      last_name:  Coussé
+    - first_name: Gudrun
+      last_name:  Vanderbauwhede
 
 - title: The languages of Native North America
   type:  book
