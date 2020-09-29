@@ -15,6 +15,9 @@
     "email": "dwhieb@gmail.com",
     "url": "https://danielhieber.com"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/dwhieb/ling-ref.git"
