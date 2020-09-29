@@ -20,17 +20,16 @@ void async function test() {
 
   bibliography = bibliography
   .replace(/\r\n/gu, `\n`)
+  .normalize()
   .trim();
 
   const citations = references
   .map(convertReference)
   .map(citation => `<li><p>${citation}</p></li>`);
 
-  const referenceList = citations.join(`\n`);
+  const referenceList = citations.join(`\n`).normalize();
   const testString    = `<ul>\n${referenceList}\n</ul>`;
   const noChange      = testString === bibliography;
-
-  console.log(testString);
 
   if (noChange) {
     console.info(`Test passed!`);
