@@ -5,6 +5,7 @@ const compilers = {
   encyclopedia_article:   compileChapter,
   journal:                compileArticle,
   magazine_article:       compileArticle,
+  report:                 compileBook,
   thesis:                 compileThesis,
   working_paper:          compileArticle,
 };
