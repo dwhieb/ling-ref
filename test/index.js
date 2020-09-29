@@ -10,24 +10,38 @@ const currentDir = path.dirname(fileURLToPath(import.meta.url));
 
 const bibliographyPath = path.join(currentDir, `bibliography.html`);
 const referencesPath   = path.join(currentDir, `references.yml`);
+const contextChars     = 50;
 
 void async function test() {
 
   const yamlReferences = await readFile(referencesPath, `utf8`);
-  const bibliography   = await readFile(bibliographyPath, `utf8`);
+  let   bibliography   = await readFile(bibliographyPath, `utf8`);
   const references     = yaml.parse(yamlReferences);
+
+  bibliography = bibliography.trim();
 
   const citations = references
   .map(convertReference)
-  .map(citation => `<p>${citation}</p>`);
+  .map(citation => `<li><p>${citation}</p></li>`);
 
-  const referenceList = citations.join(`\n  `);
+  const referenceList = citations.join(`\r\n`);
+  const testString    = `<ul>\r\n${referenceList}\r\n</ul>`;
+  const noChange      = testString === bibliography;
 
-  const testString = `<ul>\n${referenceList}\n</ul>`;
+  if (noChange) {
+    console.info(`Test passed!`);
+    return process.exit(0);
+  }
 
-  const noChange = testString === bibliography;
+  const bibliographyChars = Array.from(bibliography);
 
-  if (noChange) process.exit(0);
-  else process.exit(1);
+  const firstDifferenceIndex = Array.from(testString)
+  .findIndex((char, i) => bibliographyChars[i] !== char);
+
+  const pre = bibliography.slice(Math.max(firstDifferenceIndex - contextChars, 0), firstDifferenceIndex);
+
+  console.info(`Text immediately preceding the first difference: ${pre}`);
+
+  process.exit(1);
 
 }();
