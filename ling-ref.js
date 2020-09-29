@@ -74,9 +74,10 @@ function compileIssue(issue) {
   return ``;
 }
 
-function compileName(person, { reverse = false } = {}) {
-  if (reverse) return `${person.last_name}, ${person.first_name}`;
-  return `${person.first_name} ${person.last_name}`;
+function compileName({ first_name, last_name }, { reverse = false } = {}) {
+  if (!(first_name && last_name)) return first_name ?? last_name;
+  if (reverse) return `${last_name}, ${first_name}`;
+  return `${first_name} ${last_name}`;
 }
 
 function compileNames(names, { initial = true } = {}) {
