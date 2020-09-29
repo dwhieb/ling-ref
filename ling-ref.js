@@ -3,6 +3,7 @@ const compilers = {
   book_section:           compileChapter,
   conference_proceedings: compileProceedings,
   encyclopedia_article:   compileChapter,
+  generic:                compileGeneric,
   journal:                compileArticle,
   magazine_article:       compileArticle,
   report:                 compileBook,
@@ -223,6 +224,25 @@ function compileChapter(doc) {
   const doi           = compileDOI(doc.identifiers?.doi);
 
   return `${authors} ${year} ${doc.title}. In ${editors} <cite>${doc.source}</cite>${edition} ${seriesInfo}${pageInfo}. ${translators} ${publisherInfo} ${doi}`;
+
+}
+
+function compileGeneric(doc) {
+
+  const authors       = compileAuthors(doc.authors);
+  const editorNames   = compileEditors(doc.editors, { initial: false });
+  const editors       = editorNames ? `${editorNames},` : ``;
+  const year          = compileYear(doc.year);
+  const publisherInfo = compilePublisherInfo(doc);
+  const doi           = compileDOI(doc.identifiers?.doi);
+  const context       = compileParts([
+    doc.user_context,
+    doc.source,
+    doc.department,
+    doc.institution,
+  ]);
+
+  return `${authors ?? editors}. ${year} <cite>${doc.title}</cite>. ${context} ${publisherInfo} ${doi}`;
 
 }
 
