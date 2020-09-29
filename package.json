@@ -25,7 +25,12 @@
   "type": "module",
   "main": "ling-ref.js",
   "exports": "ling-ref.js",
-  "scripts": {},
+  "scripts": {
+    "test": "node test/index.js"
+  },
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint": "^7.10.0",
+    "yaml": "^1.10.0"
+  }
 }
