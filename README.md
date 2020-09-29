@@ -11,7 +11,7 @@ _Created and maintained by [Daniel W. Hieber][me]._
 [![npm](https://img.shields.io/npm/dt/ling-ref)][npm]
 [![GitHub issues](https://img.shields.io/github/issues/dwhieb/ling-ref)][issues]
 [![GitHub release](https://img.shields.io/github/v/release/dwhieb/ling-ref)][releases]
-[![GitHub test workflow status](https://github.com/dwhieb/ling-ref/workflows/test/badge.svg)][test]
+[![tests](https://github.com/dwhieb/ling-ref/workflows/tests/badge.svg)][tests]
 [![license](https://img.shields.io/github/license/dwhieb/ling-ref.svg)][license]
 [![GitHub stars](https://img.shields.io/github/stars/dwhieb/ling-ref.svg?style=social)][GitHub]
 
@@ -70,5 +70,5 @@ citations.forEach(citation => {
 [me]:                https://github.com/dwhieb
 [npm]:               https://www.npmjs.com/package/ling-ref
 [releases]:          https://github.com/dwhieb/ling-ref/releases
-[test]:              https://github.com/dwhieb/ling-ref/actions
+[tests]:             https://github.com/dwhieb/ling-ref/actions
 [Unified]:           https://www.linguisticsociety.org/resource/unified-style-sheet
