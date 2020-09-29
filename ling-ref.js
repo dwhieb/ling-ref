@@ -5,6 +5,7 @@ const compilers = {
   encyclopedia_article:   compileChapter,
   journal:                compileArticle,
   magazine_article:       compileArticle,
+  thesis:                 compileThesis,
   working_paper:          compileArticle,
 };
 
@@ -72,21 +73,6 @@ function compileIssue(issue) {
   return ``;
 }
 
-function compileLocaleInfo(doc) {
-
-  const parts = [
-    doc.institution,
-    doc.city,
-    getMonthString(doc.month),
-    doc.day,
-  ].filter(Boolean);
-
-  if (!parts.length) return ``;
-
-  return `${parts.join(`, `)}.`;
-
-}
-
 function compileName(person, { reverse = false } = {}) {
   if (reverse) return `${person.last_name}, ${person.first_name}`;
   return `${person.first_name} ${person.last_name}`;
@@ -133,6 +119,11 @@ function compilePages(pages) {
   return pages.replace(/-+/u, `–`);
 }
 
+function compileParts(parts, { separator = `, ` } = {}) {
+  if (!parts.length) return ``;
+  return `${parts.filter(Boolean).join(separator)}.`;
+}
+
 function compilePublisherInfo(doc) {
 
   let info = ``;
@@ -148,8 +139,9 @@ function compilePublisherInfo(doc) {
 
 function compileSeriesInfo(doc) {
   if (!doc.series) return ``;
-  const parts = [doc.series, doc.volume ?? doc.revision].filter(Boolean);
-  return `(${parts.join(` `)})`;
+  let text = compileParts([doc.series, doc.volume ?? doc.revision], { separator: ` ` });
+  text     = text.slice(0, text.length - 1);
+  return `(${text})`;
 }
 
 function compileTranslators(translators) {
@@ -210,14 +202,25 @@ function compileChapter(doc) {
 
 function compileProceedings(doc) {
 
-  const authors     = compileAuthors(doc.authors);
-  const year        = compileYear(doc.year);
-  const editorInfo  = compileEditorInfo(doc.editors);
-  const pageInfo    = compilePageInfo(doc.pages);
-  const localeInfo  = compileLocaleInfo(doc);
-  const doi         = compileDOI(doc.identifiers?.doi);
+  const authors    = compileAuthors(doc.authors);
+  const year       = compileYear(doc.year);
+  const editorInfo = compileEditorInfo(doc.editors);
+  const pageInfo   = compilePageInfo(doc.pages);
+  const localeInfo = compileParts([doc.institution, doc.city, getMonthString(doc.month), doc.day]);
+  const doi        = compileDOI(doc.identifiers?.doi);
 
   return `${authors} ${year} ${doc.title}. <cite>${doc.source}</cite>${pageInfo}. ${editorInfo} ${localeInfo} ${doi}`;
+
+}
+
+function compileThesis(doc) {
+
+  const author     = compileAuthors(doc.authors);
+  const year       = compileYear(doc.year);
+  const thesisInfo = compileParts([doc.user_context, doc.department, doc.institution]);
+  const doi        = compileDOI(doc.identifiers?.doi);
+
+  return `${author} ${year} <cite>${doc.title}</cite>. ${thesisInfo} ${doi}`;
 
 }
 

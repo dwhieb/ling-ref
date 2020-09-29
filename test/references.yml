@@ -51,6 +51,18 @@
     - first_name: Gudrun
       last_name:  Vanderbauwhede
 
+- title: Lexical flexibility in discourse
+  type:  thesis
+  year:  2020
+  authors:
+    - first_name: Daniel W.
+      last_name:  Hieber
+  institution:  University of California, Santa Barbara
+  department:   Department of Linguistics
+  user_context: Ph.D. thesis
+  identifiers:
+    doi: 12345
+
 - title: The languages of Native North America
   type:  book
   year:  1999
