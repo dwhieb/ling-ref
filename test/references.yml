@@ -10,3 +10,13 @@
   issue:  '3'
   identifiers:
     doi: 10.1086/703239
+
+- title: The languages of Native North America
+  type:  book
+  year:  1999
+  authors:
+    - first_name: Marianne
+      last_name:  Mithun
+  publisher: Cambridge University Press
+  city:      Cambridge
+  series:    Cambridge Language Surveys
