@@ -10,7 +10,7 @@ const currentDir = path.dirname(fileURLToPath(import.meta.url));
 
 const bibliographyPath = path.join(currentDir, `bibliography.html`);
 const referencesPath   = path.join(currentDir, `references.yml`);
-const contextChars     = 100;
+const contextChars     = 50;
 
 void async function test() {
 
@@ -41,9 +41,20 @@ void async function test() {
   const firstDifferenceIndex = Array.from(testString)
   .findIndex((char, i) => bibliographyChars[i] !== char);
 
-  const pre = bibliography.slice(Math.max(firstDifferenceIndex - contextChars, 0), firstDifferenceIndex);
+  const bibliographyContext = bibliography.slice(
+    Math.max(firstDifferenceIndex - contextChars, 0),
+    Math.min(firstDifferenceIndex + contextChars, bibliography.length),
+  );
 
-  console.info(`Text immediately preceding the first difference: ${pre}`);
+  const testStringContext = testString.slice(
+    Math.max(firstDifferenceIndex - contextChars, 0),
+    Math.min(firstDifferenceIndex + contextChars, testString.length),
+  );
+
+  console.info(`Differences found:
+    expected: ${bibliographyContext}
+    actual:   ${testStringContext}
+  `);
 
   process.exit(1);
 
