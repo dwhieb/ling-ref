@@ -1,7 +1,8 @@
 const compilers = {
-  book:         compileBook,
-  book_section: compileChapter,
-  journal:      compileArticle,
+  book:                   compileBook,
+  book_section:           compileChapter,
+  conference_proceedings: compileChapter,
+  journal:                compileArticle,
 };
 
 // compilers for specific fields
@@ -64,7 +65,7 @@ function compileNames(names, { initial = true } = {}) {
   if (!names.length) return firstPersonText;
 
   const lastPerson     = names.pop();
-  const lastPersonText = `, & ${lastPerson.first_name} ${lastPerson.last_name}`;
+  const lastPersonText = ` & ${lastPerson.first_name} ${lastPerson.last_name}`;
 
   if (!names.length) return `${firstPersonText}${lastPersonText}`;
 
@@ -196,7 +197,7 @@ export default function lingRef(doc) {
   return compile(doc)
   .replace(/\.{2,}/gu, `.`)
   .replace(/\s{2,}/gu, ` `)
-  .replace(/\s+\./gu, `.`)
+  .replace(/\s+(?<punctuation>[,.])/gu, `$<punctuation>`)
   .trim();
 
 }

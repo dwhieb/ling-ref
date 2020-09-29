@@ -1,3 +1,19 @@
+- title: Focus constructions in Meskwaki (Fox)
+  type:  conference_proceedings
+  authors:
+    - first_name: Amy
+      last_name:  Dahlstrom
+  year:        2003
+  source:      LFG 03
+  pages:       '144-163'
+  institution: University at Albany
+  city:        Albany, NY
+  editors:
+    - first_name: Miriam
+      last_name:  Butt
+    - first_name: Tracy Holloway
+      last_name:  King
+
 - title:  Semantic alignment in Chitimacha
   type:   journal
   source: International Journal of American Linguistics
@@ -31,7 +47,7 @@
     - first_name: Muriel
       last_name:  Norde
     - first_name: Evie
-      last_name:  Coussé
+      last_name:  Coussé
     - first_name: Gudrun
       last_name:  Vanderbauwhede
 
