@@ -7,6 +7,7 @@ const compilers = {
   magazine_article:       compileArticle,
   report:                 compileBook,
   thesis:                 compileThesis,
+  web_page:               compileWebpage,
   working_paper:          compileArticle,
 };
 
@@ -25,6 +26,22 @@ function compileAuthors(authors, { initial = true } = {}) {
   if (!authors?.length) return `unknown`;
   const text = compileNames(authors, { initial });
   return `${text}.`;
+}
+
+function compileDateAccessed(timestamp) {
+
+  if (!timestamp) return ``;
+
+  const d = new Date(timestamp);
+
+  const dateString = d.toLocaleDateString(`en-US`, {
+    day:   `numeric`,
+    month: `long`,
+    year:  `numeric`,
+  });
+
+  return `Accessed: ${dateString}.`;
+
 }
 
 function compileDOI(doi) {
@@ -75,7 +92,7 @@ function compileIssue(issue) {
 }
 
 function compileName({ first_name, last_name }, { reverse = false } = {}) {
-  if (!(first_name && last_name)) return first_name ?? last_name;
+  if (!(first_name && last_name)) return first_name || last_name;
   if (reverse) return `${last_name}, ${first_name}`;
   return `${first_name} ${last_name}`;
 }
@@ -141,7 +158,7 @@ function compilePublisherInfo(doc) {
 
 function compileSeriesInfo(doc) {
   if (!doc.series) return ``;
-  let text = compileParts([doc.series, doc.volume ?? doc.revision], { separator: ` ` });
+  let text = compileParts([doc.series, doc.volume || doc.revision], { separator: ` ` });
   text     = text.slice(0, text.length - 1);
   return `(${text})`;
 }
@@ -151,8 +168,14 @@ function compileTranslators(translators) {
   return `Translated by ${compileNames(translators, { initial: false })}.`;
 }
 
+function compileURL(websites) {
+  if (!websites?.length) return ``;
+  const [link] = websites;
+  return `<a href="${link}">${link}</a>.`;
+}
+
 function compileYear(year) {
-  return `${year}.` ?? `n.d.`;
+  return `${year}.` || `n.d.`;
 }
 
 // compilers by document type
@@ -223,6 +246,19 @@ function compileThesis(doc) {
   const doi        = compileDOI(doc.identifiers?.doi);
 
   return `${author} ${year} <cite>${doc.title}</cite>. ${thesisInfo} ${doi}`;
+
+}
+
+function compileWebpage(doc) {
+
+  const authors         = compileAuthors(doc.authors);
+  const year            = compileYear(doc.year);
+  const institution     = doc.institution || doc.source || ``;
+  const institutionInfo = institution ? `${institution}.` : ``;
+  const dateAccessed    = compileDateAccessed(doc.accessed);
+  const url             = compileURL(doc.websites);
+
+  return `${authors} ${year} <cite>${doc.title}</cite>. ${institutionInfo} ${dateAccessed} ${url}`;
 
 }
 
