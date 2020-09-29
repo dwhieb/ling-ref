@@ -19,6 +19,7 @@ jobs:
         with:
           node-version: 14.x
           registry-url: https://registry.npmjs.org/
+          scope:        '@dwhieb'
 
       - name: install dependencies
         run: npm ci
@@ -36,6 +37,7 @@ jobs:
         with:
           node-version: 14.x
           registry-url: https://npm.pkg.github.com
+          scope:        '@dwhieb'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

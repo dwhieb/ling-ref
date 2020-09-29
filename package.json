@@ -1,5 +1,5 @@
 {
-  "name": "ling-ref",
+  "name": "@dwhieb/ling-ref",
   "version": "1.0.6",
   "description": "A JavaScript library that converts a Mendeley document to an HTML citation following the Unified Stylesheet for Linguistics",
   "keywords": [
