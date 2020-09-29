@@ -27,7 +27,7 @@
   },
   "type": "module",
   "main": "ling-ref.js",
-  "exports": "ling-ref.js",
+  "exports": "./ling-ref.js",
   "scripts": {
     "test": "node test/index.js"
   },
