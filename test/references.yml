@@ -8,6 +8,23 @@
     - https://nisinoon.net
   accessed: '2020-07-20'
 
+- title:  The Edison insight and the Williams materials
+  type:   conference_proceedings
+  year:   1975
+  source: Papers of the Algonquian Conference
+  authors:
+    - first_name: George F.
+      last_name:  Aubin
+  editors:
+    - first_name: William
+      last_name:  Cowan
+  pages:     '180-195'
+  volume:    '6'
+  publisher: National Musuems of Canada
+  city:      Ottawa
+  identifiers:
+    doi: 10.2307/j.ctv16x92.12
+
 # conference proceedings
 - title: Focus constructions in Meskwaki (Fox)
   type:  conference_proceedings
