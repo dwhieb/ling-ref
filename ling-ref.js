@@ -299,9 +299,11 @@ export default function lingRef(doc) {
   if (!compile) return ``;
 
   return compile(doc)
-  .replace(/\.{2,}/gu, `.`)
-  .replace(/\s{2,}/gu, ` `)
+  .replace(/\.+/gu, `.`)
+  .replace(/\s+/gu, ` `)
   .replace(/\s+(?<punctuation>[,.])/gu, `$<punctuation>`)
+  .replace(/\.+/gu, `.`)
+  .replace(/\s+/gu, ` `)
   .trim();
 
 }
