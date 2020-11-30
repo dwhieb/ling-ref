@@ -2,7 +2,7 @@
 
 ling-ref is a small JavaScript library (browser / Node) for converting [Mendeley][Mendeley] documents to a citation in HTML following the [Unified Stylesheet for Linguistics][Unified].
 
-This library will be useful for any linguist who uses Mendeley as their bibliography management software and would like to create a presentation format of their bibliography in Markdown or HTML.
+This library is useful for any linguist who uses Mendeley as their bibliography management software and would like to create a presentation format of their bibliography in Markdown or HTML.
 
 Found a bug? [Open an issue on GitHub.][new-issue]
 

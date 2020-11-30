@@ -23,7 +23,7 @@
     "url": "https://github.com/dwhieb/ling-ref.git"
   },
   "engines": {
-    "node": "14.x"
+    "node": ">=14.0.0"
   },
   "type": "module",
   "main": "ling-ref.js",
