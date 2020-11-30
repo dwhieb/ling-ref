@@ -99,10 +99,11 @@ function compileName({ first_name, last_name }, { reverse = false } = {}) {
   return `${first_name} ${last_name}`;
 }
 
-function compileNames(names, { initial = true } = {}) {
+function compileNames(input, { initial = true } = {}) {
 
-  if (!names?.length) return ``;
+  if (!input?.length) return ``;
 
+  const names       = [...input];
   const firstPerson = names.shift();
 
   let firstPersonText;
@@ -253,14 +254,17 @@ function compileGeneric(doc) {
 
 function compileProceedings(doc) {
 
-  const authors    = compileAuthors(doc.authors);
-  const year       = compileYear(doc.year);
-  const editorInfo = compileEditorInfo(doc.editors);
-  const pageInfo   = compilePageInfo(doc.pages);
-  const localeInfo = compileParts([doc.institution, doc.city, getMonthString(doc.month), doc.day]);
-  const doi        = compileDOI(doc.identifiers?.doi);
+  const authors       = compileAuthors(doc.authors);
+  const doi           = compileDOI(doc.identifiers?.doi);
+  const editorNames   = compileEditors(doc.editors, { initial: false });
+  const editors       = editorNames ? `In ${editorNames},` : ``;
+  const localeInfo    = compileParts([doc.institution, doc.city, getMonthString(doc.month), doc.day]);
+  const pageInfo      = compilePageInfo(doc.pages);
+  const publisherInfo = compilePublisherInfo(doc);
+  const volume        = doc.volume ? ` ${doc.volume}` : ``;
+  const year          = compileYear(doc.year);
 
-  return `${authors} ${year} ${doc.title}. <cite>${doc.source}</cite>${pageInfo}. ${editorInfo} ${localeInfo} ${doi}`;
+  return `${authors} ${year} ${doc.title}. ${editors} <cite>${doc.source}</cite>${volume}${pageInfo}. ${doc.publisher ? publisherInfo : localeInfo} ${doi}`;
 
 }
 

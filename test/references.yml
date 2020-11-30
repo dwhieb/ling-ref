@@ -8,6 +8,7 @@
     - https://nisinoon.net
   accessed: '2020-07-20'
 
+# conference proceedings with editors, publication info
 - title:  The Edison insight and the Williams materials
   type:   conference_proceedings
   year:   1975
@@ -20,7 +21,7 @@
       last_name:  Cowan
   pages:     '180-195'
   volume:    '6'
-  publisher: National Musuems of Canada
+  publisher: National Museums of Canada
   city:      Ottawa
   identifiers:
     doi: 10.2307/j.ctv16x92.12
