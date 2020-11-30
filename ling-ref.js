@@ -140,9 +140,10 @@ function compilePages(pages) {
   return pages.replace(/-+/u, `–`);
 }
 
-function compileParts(parts, { separator = `, ` } = {}) {
+function compileParts(input, { separator = `, ` } = {}) {
+  const parts = input.filter(Boolean);
   if (!parts.length) return ``;
-  return `${parts.filter(Boolean).join(separator)}.`;
+  return `${parts.join(separator)}.`;
 }
 
 function compilePublisherInfo(doc) {
@@ -154,7 +155,10 @@ function compilePublisherInfo(doc) {
   if (doc.publisher) info += doc.publisher;
   else if (doc.institution) info += doc.institution;
 
-  return `${info}.`;
+  info = info.trim();
+
+  if (info) return `${info}.`;
+  return ``;
 
 }
 

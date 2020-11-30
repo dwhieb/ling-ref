@@ -1,3 +1,4 @@
+# web page
 - title: Nisinoon
   type:  web_page
   year:  2020
@@ -7,6 +8,7 @@
     - https://nisinoon.net
   accessed: '2020-07-20'
 
+# conference proceedings
 - title: Focus constructions in Meskwaki (Fox)
   type:  conference_proceedings
   authors:
@@ -23,6 +25,14 @@
     - first_name: Tracy Holloway
       last_name:  King
 
+# missing year: should display as "n.d."
+- title: Proto Algonkian word formatives
+  type:  generic
+  authors:
+    - first_name: John
+      last_name:  Hewson
+
+# journal article
 - title:  Semantic alignment in Chitimacha
   type:   journal
   source: International Journal of American Linguistics
@@ -36,6 +46,7 @@
   identifiers:
     doi: 10.1086/703239
 
+# chapter
 - title:  'Category genesis in Chitimacha: A constructional approach'
   type:   book_section
   source: Category change from a constructional perspective
@@ -60,6 +71,7 @@
     - first_name: Gudrun
       last_name:  Vanderbauwhede
 
+# thesis
 - title: Lexical flexibility in discourse
   type:  thesis
   year:  2020
@@ -72,19 +84,10 @@
   identifiers:
     doi: 12345
 
+# book
 - title: The languages of Native North America
   type:  book
   year:  1999
-  authors:
-    - first_name: Marianne
-      last_name:  Mithun
-  publisher: Cambridge University Press
-  city:      Cambridge
-  series:    Cambridge Language Surveys
-
-# missing year: should display as "n.d."
-- title: The languages of Native North America
-  type:  book
   authors:
     - first_name: Marianne
       last_name:  Mithun
