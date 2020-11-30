@@ -177,7 +177,8 @@ function compileURL(websites) {
 }
 
 function compileYear(year) {
-  return `${year}.` || `n.d.`;
+  if (year) return `${year}.`;
+  return `n.d.`;
 }
 
 // compilers by document type

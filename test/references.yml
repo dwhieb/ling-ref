@@ -81,3 +81,13 @@
   publisher: Cambridge University Press
   city:      Cambridge
   series:    Cambridge Language Surveys
+
+# missing year: should display as "n.d."
+- title: The languages of Native North America
+  type:  book
+  authors:
+    - first_name: Marianne
+      last_name:  Mithun
+  publisher: Cambridge University Press
+  city:      Cambridge
+  series:    Cambridge Language Surveys
